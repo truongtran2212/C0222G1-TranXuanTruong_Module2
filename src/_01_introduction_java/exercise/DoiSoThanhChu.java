@@ -125,36 +125,37 @@ public class DoiSoThanhChu {
 
         switch (hundreds) {
             case 1:
-                output3 = "one hundred and";
+                output3 = "one hundred";
                 break;
             case 2:
-                output3 = "two hundred and";
+                output3 = "two hundred";
                 break;
             case 3:
-                output3 = "three hundred and";
+                output3 = "three hundred";
                 break;
             case 4:
-                output3 = "four hundred and";
+                output3 = "four hundred";
                 break;
             case 5:
-                output3 = "five hundred and";
+                output3 = "five hundred ";
                 break;
             case 6:
-                output3 = "six hundred and";
+                output3 = "six hundred ";
                 break;
             case 7:
-                output3 = "seven hundred and";
+                output3 = "seven hundred ";
                 break;
             case 8:
-                output3 = "eight hundred and";
+                output3 = "eight hundred ";
                 break;
             case 9:
-                output3 = "nine hundred and";
+                output3 = "nine hundred ";
                 break;
         }
         if (tens == 1 ) {
             System.out.println(output3 + " " +output2);
-        }else {
+        }
+        else {
             System.out.println(output3 + " " + output2 + " " + output1);
         }
     }
