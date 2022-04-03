@@ -12,11 +12,7 @@ public class AddElement {
         System.out.println(" Nhập vị trí muốn thếm phần tử vào: ");
         int index = input.nextInt();
 
-
         int[] array = {2, 5, 3, 6, 8, 7, 9, 23,0};
-
-
-
 
         if(index <= array.length-1)
         for (int i = array.length -1; i >= index; i--) {
