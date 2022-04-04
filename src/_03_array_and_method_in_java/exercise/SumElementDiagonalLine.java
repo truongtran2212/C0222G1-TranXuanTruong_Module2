@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class SumElementDiagonalLine {
-    public static void sumElementDiagonalLine(int sum, int sum1,int[][]array){
-
+    public static void sumElementDiagonalLine(int[][]array){
+        int sum = 0;
+        int sum1 = 0;
         for (int i = 0, j = array.length - 1; i < array.length; i++, j--) {
             sum += array[i][i];
             sum1 += array[i][j];
@@ -18,8 +19,7 @@ public class SumElementDiagonalLine {
         System.out.println(sum + sum1);
     }
     public static void main(String[] args) {
-        int sum = 0;
-        int sum1 = 0;
+        
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập số lượng phần tử: ");
         int n = input.nextInt();
@@ -33,7 +33,7 @@ public class SumElementDiagonalLine {
         }
         System.out.println("Ma trận A vừa nhập:");
         System.out.println((Arrays.deepToString(array)));
-        sumElementDiagonalLine(sum, sum1,array);
+        sumElementDiagonalLine(array);
         }
     }
 

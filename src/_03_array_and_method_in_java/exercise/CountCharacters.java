@@ -3,7 +3,7 @@ package _03_array_and_method_in_java.exercise;
 import java.util.Scanner;
 
 public class CountCharacters {
-    public static int countCharacter(String str1, String character){
+    public static void countCharacter(String str1, String character){
         int count = 0;
         for (int i = 0; i < str1.length(); i++) {
             if (character.charAt(0) == str1.charAt(i)) {
@@ -11,7 +11,6 @@ public class CountCharacters {
             }
         }
         System.out.println("Kí tự muốn đếm trong chuỗi là: " + character+ "\n"+ "Số lần xuất hiện của nó là: "+count);
-        return count;
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

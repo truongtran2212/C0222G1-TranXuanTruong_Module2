@@ -4,25 +4,24 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class SumElementColumn {
-    public static int sumElementColumn(int a , int n, int m,int[][] array, int sum){
-        for (int j = 0; j < m; j++) {
-            if (a >= 0 && a < n)
-                sum += array[a][j];
-
+    public static int sumElementColumn(int indexCol , int col, int row,int[][] array){
+        int sum = 0;
+        for (int j = 0; j < col; j++) {
+            if (indexCol >= 0 && indexCol < row)
+                sum += array[j][indexCol];
         }
         return sum;
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println(" Số lượng mảng ");
-        int n = input.nextInt();
+        int col = input.nextInt();
         System.out.println(" Số lượng phần tử");
-        int m = input.nextInt();
-        int[][] array = new int[n][m];
-        int sum = 0;
+        int row = input.nextInt();
+        int[][] array = new int[col][row];
         System.out.println(" Nhập các phần tử vào mảng");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        for (int i = 0; i < col; i++) {
+            for (int j = 0; j < row; j++) {
                 System.out.print("A[" + i + "][" + j + "] = ");
                 array[i][j] = input.nextInt();
             }
@@ -30,7 +29,7 @@ public class SumElementColumn {
         System.out.println("Ma trận A vừa nhập:");
         System.out.println(Arrays.deepToString(array));
         System.out.println(" Cột muốn cộng");
-        int a = input.nextInt();
-        System.out.println(sumElementColumn(a,m,n,array,sum));
+        int indexCol = input.nextInt();
+        System.out.println(sumElementColumn(indexCol,col,row,array));
     }
 }

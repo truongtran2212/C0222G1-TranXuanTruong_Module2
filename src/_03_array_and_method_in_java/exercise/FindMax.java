@@ -12,8 +12,6 @@ public class FindMax {
         }
         return max;
     }
-
-
     public static void main(String[] args) {
         int[][] array = {
                 {12, 5, 26, 27, 22, 44, 15, 6, 3},
