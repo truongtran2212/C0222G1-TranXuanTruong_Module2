@@ -19,7 +19,7 @@ public class SumElementDiagonalLine {
         System.out.println(sum + sum1);
     }
     public static void main(String[] args) {
-        
+
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập số lượng phần tử: ");
         int n = input.nextInt();
