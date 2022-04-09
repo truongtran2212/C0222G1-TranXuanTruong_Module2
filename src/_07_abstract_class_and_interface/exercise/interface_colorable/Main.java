@@ -12,7 +12,7 @@ public class Main {
             System.out.println(shapes.getArea());
             if(shapes instanceof Square){
                 Square square = (Square) shapes;
-                square .howToColor();
+                square.howToColor();
             }
             System.out.println(shapes.toString());
         }
