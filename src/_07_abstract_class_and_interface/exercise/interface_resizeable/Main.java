@@ -13,17 +13,16 @@ public class Main {
         for (Shape shapes: shape) {
             System.out.println("Diện tích: ");
             System.out.println(shapes.getArea());
-            System.out.println(shapes.toString());
+//            System.out.println(shapes.toString());
         }
         System.out.println("\n");
         System.out.println("Sau khi random");
-        double random = Math.random()*100;
 
         for (Shape shapes: shape) {
-            shapes.resize(random);
+            shapes.resize(30);
             System.out.println("Diện tích: ");
             System.out.println(shapes.getArea());
-            System.out.println(shapes.toString());
+//            System.out.println(shapes.toString());
         }
     }
 }

@@ -39,4 +39,5 @@ public abstract class Shape implements Resizeable {
         }
     }
     public abstract double getArea();
+
 }

@@ -14,7 +14,7 @@ public class Main {
         person[4] = new Student("Tùng", 20, true, 9);
         person[5] = new Teacher("Nghĩa", 20, true, 5000000);
 
-
+        System.out.println(person.toString());
         // làm danh sách các option
         Scanner scanner = new Scanner(System.in);
 
@@ -192,6 +192,8 @@ public class Main {
                 danhSachGiaoVien();
                 break;
             }
+
         }
+
     }
 }
