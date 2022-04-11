@@ -126,8 +126,6 @@ public class Main {
 
     // ép kiểu qua DataType Teacher
     public static void addTeacher() {
-
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Tên Giáo viên: ");
 
