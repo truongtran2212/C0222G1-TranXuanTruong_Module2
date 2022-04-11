@@ -1,6 +1,6 @@
 package _07_abstract_class_and_interface.exercise.interface_resizeable;
 
-public class Square extends Shape implements Resizeable {
+public class Square extends Shape {
         private double side;
 
     @Override

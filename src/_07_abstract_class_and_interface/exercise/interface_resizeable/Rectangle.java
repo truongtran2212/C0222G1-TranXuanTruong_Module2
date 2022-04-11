@@ -1,6 +1,6 @@
 package _07_abstract_class_and_interface.exercise.interface_resizeable;
 
-public class Rectangle extends Shape implements Resizeable {
+public class Rectangle extends Shape {
         private double width;
         private double length;
 

@@ -17,11 +17,12 @@ public class Main {
         }
         System.out.println("\n");
         System.out.println("Sau khi random");
-
+        double random = Math.random()*100;
         for (Shape shapes: shape) {
-            shapes.resize(30);
+            shapes.resize(random);
             System.out.println("Diện tích: ");
             System.out.println(shapes.getArea());
+//            System.out.println(shapes);
 //            System.out.println(shapes.toString());
         }
     }
