@@ -11,7 +11,7 @@ public class Main {
             System.out.println("Diện tích: ");
             System.out.println(item.getArea());
             if (item instanceof Colorable) {
-                Square square = (Square) item;
+                Square  square = (Square) item;
                 square.howToColor();
             }
         }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Person[] person = new Person[100];
+    private static int count = 6;
 
     public static void main(String[] args) {
         // Tạo mảng
@@ -64,7 +65,7 @@ public class Main {
         for (int i = 0; i < 10; i++) {
 
             if (person[i] != null) {
-                System.out.println(person[i]);
+                System.out.println(person[i] + ", " + i);
             }
         }
     }
@@ -81,10 +82,11 @@ public class Main {
 
     // ép kiểu qua DataType Teacher
     public static void danhSachGiaoVien() {
+        int i = 0;
         for (Person item : person) {
             if (item instanceof Teacher) {
                 Teacher teacher = (Teacher) item;
-                System.out.println(teacher.toString());
+                System.out.println(teacher.toString() + " ," +  i++);
             }
         }
     }
@@ -111,14 +113,9 @@ public class Main {
         }
 
         // Cách thêm
-        int index = 0;
-        for (int i = 0; i < 10; i++) {
-            if (person[i] == null) {
-                index = i;
-                break;
-            }
-        }
-        person[index] = new Student(name, age, gender, point);
+//
+        person[count] = new Student(name, age, gender, point);
+        count++;
 
         danhSachSinhVien();
     }
@@ -142,18 +139,13 @@ public class Main {
             gender = true;
         }
         // Cách thêm
-        int index = 0;
-        for (int i = 0; i < 10; i++) {
-            if (person[i] == null) {
-                index = i;
-                break;
-            }
-        }
-        person[index] = new Teacher(name, age, gender, salary);
 
+        person[count] = new Teacher(name, age, gender, salary);
+        count++;
         System.out.println("Sau khi thêm");
         danhSachGiaoVien();
     }
+
     // Xóa tên học sinh
     // Chưa xử lí được else
     public static void deleteStudent() {
@@ -162,15 +154,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Tên muốn xóa");
         String name = scanner.nextLine();
-        for (int i = 0; i < 10; i++) {
+        boolean check = true;
+        int i;
+        for (i = 0; i < person.length; i++) {
             if (name.equals(person[i].getName())) {
-                person[i] = null;
-                System.out.println("Danh sách sau khi xóa");
-                danhSachSinhVien();
+                check = true;
                 break;
+            } else {
+                check = false;
             }
         }
+        if (check) {
+            person[i] = null;
+            System.out.println("Danh sách sau khi xóa");
+            danhSachGiaoVien();
+
+        } else {
+            System.out.println("Không có trong danh sách");
+        }
     }
+
     // Xóa tên giáo viên
     public static void deleteTeacher() {
         System.out.println("Trước khi xóa");
@@ -179,14 +182,17 @@ public class Main {
         System.out.println("Tên muốn xóa");
         String name = scanner.nextLine();
 
-       // Chưa xử lí được else
+        // Chưa xử lí được else
 
         for (int i = 0; i < person.length; i++) {
+            if (person[i] == null) {
+                System.out.println("Không có trong danh sách");
+            }
             if (name.equals(person[i].getName())) {
-                person[i] = null; // đoạn này chưa hiểu
+                person[i] = null;
                 System.out.println("Danh sách sau khi xóa");
                 danhSachGiaoVien();
-               break;
+                    break;
             }
         }
     }
