@@ -7,12 +7,12 @@ public class Main {
         shape[1] = new Square("Red", true, 5);
 
         System.out.println("Các hình");
-        for (Shape shapes : shape) {
+        for (Shape item : shape) {
             System.out.println("Diện tích: ");
-            System.out.println(shapes.getArea());
-            if (shapes instanceof Square) {
-                Colorable colorable = (Square) shapes;
-                colorable.howToColor();
+            System.out.println(item.getArea());
+            if (item instanceof Colorable) {
+                Square square = (Square) item;
+                square.howToColor();
             }
         }
     }

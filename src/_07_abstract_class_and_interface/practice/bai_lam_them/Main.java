@@ -3,7 +3,7 @@ package _07_abstract_class_and_interface.practice.bai_lam_them;
 import java.util.Scanner;
 
 public class Main {
-    public static Person[] person = new Person[10];
+    public static Person[] person = new Person[100];
 
     public static void main(String[] args) {
         // Tạo mảng
@@ -14,7 +14,6 @@ public class Main {
         person[4] = new Student("Tùng", 20, true, 9);
         person[5] = new Teacher("Nghĩa", 20, true, 5000000);
 
-        System.out.println(person.toString());
         // làm danh sách các option
         Scanner scanner = new Scanner(System.in);
 
@@ -171,7 +170,6 @@ public class Main {
                 break;
             }
         }
-
     }
     // Xóa tên giáo viên
     public static void deleteTeacher() {
@@ -188,10 +186,8 @@ public class Main {
                 person[i] = null; // đoạn này chưa hiểu
                 System.out.println("Danh sách sau khi xóa");
                 danhSachGiaoVien();
-                break;
+               break;
             }
-
         }
-
     }
 }
