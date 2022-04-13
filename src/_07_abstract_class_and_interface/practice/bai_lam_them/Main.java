@@ -31,9 +31,7 @@ public class Main {
 
 
             int choose = Integer.parseInt(scanner.nextLine()); // nên chuyển sang dạng này
-            if (choose == 7) {
-                break;
-            }
+
             switch (choose) {
                 case 0:
                     display();
@@ -55,6 +53,9 @@ public class Main {
                     break;
                 case 6:
                     deleteTeacher();
+                    break;
+                case 7:
+                    System.exit(7);
                     break;
             }
         }

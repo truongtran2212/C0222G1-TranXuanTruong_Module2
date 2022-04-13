@@ -3,13 +3,14 @@ package _case_study.controller;
 import java.util.Scanner;
 
 public class FuramaController {
+    public static final boolean check = true;
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         displayMainMenu();
     }
 
     public static void displayMainMenu() {
-
-        boolean check = true;
         while (check) {
             System.out.println("1. Employee Management");
             System.out.println("2. Customer Management");
@@ -19,8 +20,9 @@ public class FuramaController {
             System.out.println("6. Exit");
 
             System.out.println("Chọn 1 option ");
-            Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+
+            int choose = Integer.parseInt(scanner.nextLine());
+
             switch (choose) {
                 case 1:
                     displayMenuEmployee();
@@ -32,15 +34,22 @@ public class FuramaController {
                     displayMenuFacility();
                     break;
                 case 4:
-
-
+                    displayMenuBooking();
+                    break;
+                case 5:
+                    displayMenuPromotion();
+                    break;
+                case 6:
+                    System.exit(6);
+                    break;
             }
         }
     }
 
     public static void displayMenuEmployee() {
-        boolean check = true;
+
         while (check) {
+
             System.out.println("1. Display list employees");
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
@@ -48,8 +57,7 @@ public class FuramaController {
 
             System.out.println("Chọn 1 option ");
 
-            Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
 
@@ -69,7 +77,6 @@ public class FuramaController {
     }
 
     public static void displayMenuCustomer() {
-        boolean check = true;
         while (check) {
             System.out.println("1. Display list customer");
             System.out.println("2. Add new customer");
@@ -78,8 +85,8 @@ public class FuramaController {
 
             System.out.println("Chọn 1 option ");
 
-            Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+
+            int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
 
@@ -96,8 +103,9 @@ public class FuramaController {
             }
         }
     }
+
     public static void displayMenuFacility() {
-        boolean check = true;
+
         while (check) {
             System.out.println("1. Display list facility");
             System.out.println("2. Add new facility");
@@ -106,8 +114,8 @@ public class FuramaController {
 
             System.out.println("Chọn 1 option ");
 
-            Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+
+            int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
 
@@ -119,6 +127,67 @@ public class FuramaController {
 
                     break;
                 case 4:
+                    displayMainMenu();
+                    break;
+            }
+        }
+    }
+
+    public static void displayMenuBooking() {
+
+        while (check) {
+            System.out.println("1. Add new booking");
+            System.out.println("2. display list booking");
+            System.out.println("3. Create new constracts");
+            System.out.println("4. Display list contracts");
+            System.out.println("5. Edit contracts");
+            System.out.println("6. Return main menu");
+
+            System.out.println("Chọn 1 option ");
+
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+                    displayMainMenu();
+                    break;
+            }
+        }
+    }
+
+    public static void displayMenuPromotion() {
+
+        while (check) {
+            System.out.println("1. Display list customers use service");
+            System.out.println("2. Display list customers get voucher");
+            System.out.println("3. Return main menu");
+
+            System.out.println("Chọn 1 option ");
+
+
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
                     displayMainMenu();
                     break;
             }
