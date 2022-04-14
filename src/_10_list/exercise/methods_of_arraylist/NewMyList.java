@@ -78,6 +78,16 @@ public class NewMyList<E> {
         }
         return false;
     }
+    public E clone(){
+        Object[] newList = new Object[DEFAULT_CAPACITY];
+        if (size == elements.length) {
+            ensureCapacity(5);
+        }
+        for (int i = 0; i < size(); i++) {
+             newList[i] = elements[i];
+        }
+        return (E) Arrays.toString(newList);
+    }
 
     @Override
     public String toString() {

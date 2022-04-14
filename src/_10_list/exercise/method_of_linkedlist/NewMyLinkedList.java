@@ -49,26 +49,27 @@ public class NewMyLinkedList<E> {
             while (temp.next != null) temp = temp.next;
             temp.next = new Node(data);
         }
+        numNodes++;
     }
-
-    public void remove(int index) {
+    public E remove(int index) {
         Node temp = head;
-
-        for (int i = 0; i < index - 1 && temp.next != null; i++) {
-            temp.next = temp.next.next;
+//        if(index == 0 ){
+//            return getFirst();
+//        }else if(index == numNodes - 1){
+//            return ge
+//        }
+        for (int i = index; i < numNodes - 1; i++) {
+            temp = temp.next;
         }
-
+        temp.next = null;
         numNodes--;
+        return (E) temp.getData();
     }
 
     public void get(int index) {
         Node temp = head;
-        for (int i = 0; i < index - 1; i++) temp = temp.next;
+        for (int i = 0; i < index; i++) temp = temp.next;
         System.out.println(temp.data);
-    }
-    public E getFirst() {
-        Node temp = head;
-        return (E) temp.getData();
     }
 
     public int size() {
@@ -121,5 +122,21 @@ public class NewMyLinkedList<E> {
         }
         head = null;
         numNodes = 0;
+    }
+
+
+    @Override
+    public String toString() {
+        Node temp = head;
+         StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < numNodes; i++) {
+            result.append(temp.getData());
+            if (i < numNodes - 1) {
+                result.append(", ");
+            }
+            temp = temp.next;
+        }
+        result.append("]");
+        return result.toString();
     }
 }
