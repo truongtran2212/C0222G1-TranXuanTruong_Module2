@@ -17,14 +17,12 @@ public class CheckBracket {
     }
 
     public static boolean check( String string){
-        Stack<Character> bStack = new Stack<>();
-        char left;
-
+        Stack<String> bStack = new Stack<>();
+        String [] array = string.split("");
         for (int i = 0; i < string.length(); i++) {
-            left = string.charAt(i);
-            if (left == '(') {
-                bStack.push(left);
-            } else if (left == ')') {
+            if (array[i].equals("(")) {
+                bStack.push(array[i]);
+            } else if (array[i].equals(")")) {
                 if (bStack.empty()) {
                     return false;
                 } else {
@@ -37,5 +35,6 @@ public class CheckBracket {
         }else{
             return false;
         }
+
     }
 }
