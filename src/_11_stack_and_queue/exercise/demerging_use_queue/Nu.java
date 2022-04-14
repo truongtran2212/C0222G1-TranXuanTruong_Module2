@@ -20,7 +20,7 @@ public class Nu extends Employee {
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public int compareTo(Employee o) {
+        return super.compareTo(o);
     }
 }

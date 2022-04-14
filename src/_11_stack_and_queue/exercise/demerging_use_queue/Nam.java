@@ -23,4 +23,9 @@ public class Nam  extends Employee{
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public int compareTo(Employee o) {
+        return super.compareTo(o);
+    }
 }

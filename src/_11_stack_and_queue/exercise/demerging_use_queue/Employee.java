@@ -2,10 +2,10 @@ package _11_stack_and_queue.exercise.demerging_use_queue;
 
 import java.util.Date;
 
-public class Employee {
-        private String name;
-        private boolean gender;
-        private int DateOfBirth;
+public class Employee implements Comparable<Employee> {
+    private String name;
+    private boolean gender;
+    private int DateOfBirth;
 
     public Employee(String name, int dateOfBirth) {
         this.name = name;
@@ -42,5 +42,17 @@ public class Employee {
                 "name='" + name + '\'' +
                 ", DateOfBirth=" + DateOfBirth +
                 '}' + "\n";
+    }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        if (DateOfBirth > o.DateOfBirth) {
+            return 1;
+        } else if (DateOfBirth < o.DateOfBirth) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
