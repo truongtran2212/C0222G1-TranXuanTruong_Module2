@@ -1,20 +1,43 @@
 package _11_stack_and_queue.exercise.demerging_use_queue;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class Main {
-    public static Employee [] employee = new Employee[10];
+
     public static void main(String[] args) {
-        Queue<String > NU = new LinkedList<>();
-        Queue<String > NAM = new LinkedList<>();
+        List<Employee> employeeList = new ArrayList<>();
+
+        Queue<Employee > nam = new LinkedList<>();
+        Queue<Employee > nu = new LinkedList<>();
+
+        employeeList.add(new Nam("Trường",1998));
+        employeeList.add(new Nu("Hà",1997));
+        employeeList.add(new Nu("Hoa",2000));
+        employeeList.add(new Nam("Khoa",1999));
+        employeeList.add(new Nam("Tùng",1995));
 
 
-        employee[0] = new Nam("Trường",true,2000);
-        employee[1] = new Nu("Hoa",false,1993);
-        employee[1] = new Nam("Khoa",false,1998);
-        employee[1] = new Nu("Huệ",false,1995);
-        employee[1] = new Nu("Hà",false,1997);
-
+        for (int i = 0; i < employeeList.size(); i++) {
+            if ((employeeList.get(i).isGender()) == true){
+                nam.add(employeeList.get(i));
+            }else {
+                nu.add(employeeList.get(i));
+            }
+        }
+        String output = "";
+        for (int i = 0; i < employeeList.size(); i++) {
+            if(!nu.isEmpty()){
+                output += nu.poll();
+            }
+        }
+        for (int i = 0; i < employeeList.size(); i++) {
+            if(!nam.isEmpty()){
+                output += nam.poll();
+            }
+        }
+        System.out.println(output);
     }
 }

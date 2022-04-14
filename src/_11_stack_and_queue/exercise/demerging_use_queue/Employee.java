@@ -4,16 +4,12 @@ import java.util.Date;
 
 public class Employee {
         private String name;
-        private boolean gender = false;
+        private boolean gender;
         private int DateOfBirth;
 
-    public Employee(String name, boolean gender, int dateOfBirth) {
+    public Employee(String name, int dateOfBirth) {
         this.name = name;
-        this.gender = gender;
-        DateOfBirth = dateOfBirth;
-    }
-
-    public Employee() {
+        this.DateOfBirth = dateOfBirth;
     }
 
     public String getName() {
@@ -38,5 +34,13 @@ public class Employee {
 
     public void setDateOfBirth(int dateOfBirth) {
         DateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", DateOfBirth=" + DateOfBirth +
+                '}' + "\n";
     }
 }
