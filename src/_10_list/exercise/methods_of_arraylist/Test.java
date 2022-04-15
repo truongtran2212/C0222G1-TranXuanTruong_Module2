@@ -14,7 +14,7 @@ public class Test {
         myList.add(3);
         myList.add(4);
         myList.add(5);
-
+        System.out.println(myList);
 
 //        System.out.println(myList.toString());
 //        System.out.println("Độ dài mảng là: " + myList.size());
