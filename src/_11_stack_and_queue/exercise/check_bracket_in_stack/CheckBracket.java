@@ -30,11 +30,6 @@ public class CheckBracket {
                 }
             }
         }
-        if(bStack.empty()){
-            return true;
-        }else{
-            return false;
-        }
-
+        return bStack.empty();
     }
 }

@@ -6,6 +6,7 @@ public class ProductManager {
     public static List<Product> myList = new LinkedList<>();
     public static Scanner input = new Scanner(System.in);
     public static int size = 0;
+
     public static void main(String[] args) {
 
 
@@ -47,7 +48,9 @@ public class ProductManager {
                     findProduct();
                     break;
                 case 6:
-                    sortByPrice();
+                    sortByPriceUp();
+                    System.out.println("------------------------------------\n");
+                    sortByPriceDown();
                     break;
                 case 7:
                     System.exit(7);
@@ -93,11 +96,9 @@ public class ProductManager {
                 flag = true;
                 diplay();
                 break;
-            } else {
-                flag = false;
             }
         }
-        if(!flag){
+        if (!flag) {
             System.out.println("Không có id này: ");
         }
 
@@ -110,31 +111,41 @@ public class ProductManager {
         for (int i = 0; i < myList.size(); i++) {
             if (myList.get(i).getId() == id) {
                 myList.remove(i);
-
+                break;
             }
         }
         diplay();
     }
-    public static void  findProduct(){
+
+    public static void findProduct() {
         System.out.println("Tên");
         String nameProduct = input.nextLine();
         boolean flag = false;
-        for (int i = 0; i <myList.size() ; i++) {
-            if(myList.get(i).getNameProduct().equals(nameProduct)){
+        for (int i = 0; i < myList.size(); i++) {
+            if (myList.get(i).getNameProduct().equals(nameProduct)) {
                 System.out.println(myList.get(i));
                 flag = true;
-            }else{
-                flag = false;
+                break;
             }
         }
-        if(!flag){
+        if (!flag) {
             System.out.println("Không có sản phẩm này");
         }
     }
-    public static void sortByPrice(){
+
+    public static void sortByPriceUp() {
         PriceComparator priceComparator = new PriceComparator();
-        Collections.sort(myList,priceComparator);
+        Collections.sort(myList, priceComparator);
+        System.out.println("Sắp xếp theo giá tăng dần:");
         diplay();
     }
+
+    public static void sortByPriceDown() {
+        PriceComparatorDown priceComparatorUp = new PriceComparatorDown();
+        System.out.println("Sắp xếp theo giá giảm dần:");
+        Collections.sort(myList, priceComparatorUp);
+        diplay();
+    }
+
 }
 
