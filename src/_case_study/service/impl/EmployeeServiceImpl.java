@@ -46,21 +46,91 @@ public class EmployeeServiceImpl implements EmployeeService {
         String gender = input.nextLine();
 
         System.out.println("Nhập trình độ nhân viên: ");
-        String level = input.nextLine();
+
+        String level = "";
+
+        // Xét trình độ
+
+        System.out.println("1. Trung cấp");
+        System.out.println("2. Cao đẳng ");
+        System.out.println("3. Đại học");
+        System.out.println("4. Sau đại học");
+
+
+        int choose = Integer.parseInt(input.nextLine());
+        boolean check = true;
+
+        while (check) {
+            switch (choose) {
+                case 1:
+                    level += "Trung cấp";
+                    check = false;
+                    break;
+                case 2:
+                    level += "Cao đẳng";
+                    check = false;
+                    break;
+                case 3:
+                    level += "Đại học";
+                    check = false;
+                    break;
+                case 4:
+                    level += "Sau đại học";
+                    check = false;
+                    break;
+            }
+        }
 
         System.out.println("Nhập lương nhân viên:");
         int salary = Integer.parseInt(input.nextLine());
 
 
         System.out.println("Nhập chức vụ nhân viên: ");
-        String staffPosition = input.nextLine();
+        String staffPosition = "";
 
+        System.out.println("1. Lễ tân");
+        System.out.println("2. Phục vụ");
+        System.out.println("3. Chuyên viên");
+        System.out.println("4. Giám sát");
+        System.out.println("5. Quản lý");
+        System.out.println("6. Giám đốc");
 
-        // Sao phải tạo 1 đối tượng trong khi có thể bỏ cả cái new vào add()
+        // Xét chức vụ
+
+        int choose1 = Integer.parseInt(input.nextLine());
+        boolean checkPosition = true;
+
+        while (checkPosition) {
+            switch (choose1) {
+                case 1:
+                    staffPosition += "Lễ tân";
+                    checkPosition = false;
+                    break;
+                case 2:
+                    staffPosition += "Phục vụ";
+                    checkPosition = false;
+                    break;
+                case 3:
+                    staffPosition += "Chuyên viên";
+                    checkPosition = false;
+                    break;
+                case 4:
+                    staffPosition += "Giám sát";
+                    checkPosition = false;
+                    break;
+                case 5:
+                    staffPosition += "Quản lý";
+                    checkPosition = false;
+                    break;
+                case 6:
+                    staffPosition += "Giám đốc";
+                    checkPosition = false;
+                    break;
+            }
+        }
 
         Employee employee = new Employee(id, age, name, phoneNumber, idCardNumber, email, gender, level, salary, staffPosition);
 
-        // thệm vào đối tượng của arrayList
         employeeList.add(employee);
         System.out.println("Đã thêm mới thành công.");
     }
@@ -105,15 +175,89 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("Nhập giới tính nhân viên:");
                 String gender = input.nextLine();
 
+
                 System.out.println("Nhập trình độ nhân viên: ");
-                String level = input.nextLine();
+                String level = "";
+
+                // Xét trình độ của nhân viên
+                System.out.println("1. Trung cấp");
+                System.out.println("2. Cao đẳng ");
+                System.out.println("3. Đại học");
+                System.out.println("4. Sau đại học");
+
+                int choose = Integer.parseInt(input.nextLine());
+                boolean check = true;
+
+                while (check) {
+                    switch (choose) {
+                        case 1:
+                            level += "Trung cấp";
+                            check = false;
+                            break;
+                        case 2:
+                            level += "Cao đẳng";
+                            check = false;
+                            break;
+                        case 3:
+                            level += "Đại học";
+                            check = false;
+                            break;
+                        case 4:
+                            level += "Sau đại học";
+                            check = false;
+                            break;
+                    }
+                }
+
 
                 System.out.println("Nhập lương nhân viên:");
                 int salary = Integer.parseInt(input.nextLine());
 
 
                 System.out.println("Nhập chức vụ nhân viên: ");
-                String staffPosition = input.nextLine();
+
+                String staffPosition = "";
+                // Xét chức vụ của nhân viên
+
+                System.out.println("1. Lễ tân");
+                System.out.println("2. Phục vụ");
+                System.out.println("3. Chuyên viên");
+                System.out.println("4. Giám sát");
+                System.out.println("5. Quản lý");
+                System.out.println("6. Giám đốc");
+
+                int choose1 = Integer.parseInt(input.nextLine());
+                boolean checkPosition = true;
+
+                while (checkPosition) {
+                    switch (choose1) {
+                        case 1:
+                            staffPosition += "Lễ tân";
+                            checkPosition = false;
+                            break;
+                        case 2:
+                            staffPosition += "Phục vụ";
+                            checkPosition = false;
+                            break;
+                        case 3:
+                            staffPosition += "Chuyên viên";
+                            checkPosition = false;
+                            break;
+                        case 4:
+                            staffPosition += "Giám sát";
+                            checkPosition = false;
+                            break;
+                        case 5:
+                            staffPosition += "Quản lý";
+                            checkPosition = false;
+                            break;
+                        case 6:
+                            staffPosition += "Giám đốc";
+                            checkPosition = false;
+                            break;
+                    }
+                }
+
                 employeeList.add(new Employee(id, age, name, phoneNumber, idCardNumber, email, gender, level, salary, staffPosition));
                 System.out.println("Thông tin của nhân viên đã được sửa đổi. ");
                 flag = true;

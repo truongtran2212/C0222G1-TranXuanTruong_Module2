@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class CustomerServiceImpl implements CustomerService {
     static List<Customer> customerList = new LinkedList<>();
     static Scanner input = new Scanner(System.in);
@@ -47,7 +48,42 @@ public class CustomerServiceImpl implements CustomerService {
         String address = input.nextLine();
 
         System.out.println("Nhập loại khách hàng: ");
-        String typeOfCustomer = input.nextLine();
+
+        String typeOfCustomer = "";
+
+        System.out.println("1. Diamond");
+        System.out.println("2. Platinum");
+        System.out.println("3. Gold");
+        System.out.println("4. Silver");
+        System.out.println("5. Member");
+
+        int choose = Integer.parseInt(input.nextLine());
+        boolean check = true;
+
+        while (check) {
+            switch (choose) {
+                case 1:
+                    typeOfCustomer += "Diamond";
+                    check = false;
+                    break;
+                case 2:
+                    typeOfCustomer += "Platinum";
+                    check = false;
+                    break;
+                case 3:
+                    typeOfCustomer += "Gold";
+                    check = false;
+                    break;
+                case 4:
+                    typeOfCustomer += "Silver";
+                    check = false;
+                    break;
+                case 5:
+                    typeOfCustomer += "Member";
+                    check = false;
+                    break;
+            }
+        }
 
         Customer customer = new Customer(id, age, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
         customerList.add(customer);
@@ -100,7 +136,42 @@ public class CustomerServiceImpl implements CustomerService {
                 String address = input.nextLine();
 
                 System.out.println("Nhập loại khách hàng: ");
-                String typeOfCustomer = input.nextLine();
+
+                String typeOfCustomer = "";
+
+                System.out.println("1. Diamond");
+                System.out.println("2. Platinum");
+                System.out.println("3. Gold");
+                System.out.println("4. Silver");
+                System.out.println("5. Member");
+
+                int choose = Integer.parseInt(input.nextLine());
+                boolean check = true;
+
+                while (check) {
+                    switch (choose) {
+                        case 1:
+                            typeOfCustomer += "Diamond";
+                            check = false;
+                            break;
+                        case 2:
+                            typeOfCustomer += "Platinum";
+                            check = false;
+                            break;
+                        case 3:
+                            typeOfCustomer += "Gold";
+                            check = false;
+                            break;
+                        case 4:
+                            typeOfCustomer += "Silver";
+                            check = false;
+                            break;
+                        case 5:
+                            typeOfCustomer += "Member";
+                            check = false;
+                            break;
+                    }
+                }
 
                 customerList.add(new Customer(id, age, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer));
                 System.out.println("Thông tin của khách hàng đã được sửa đổi. ");
