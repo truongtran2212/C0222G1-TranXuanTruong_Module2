@@ -1,4 +1,4 @@
-package _case_study.model;
+package _case_study.model.booking_contract;
 
 public class Booking {
     private int idBooking;

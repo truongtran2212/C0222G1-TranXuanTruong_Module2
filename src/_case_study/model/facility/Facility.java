@@ -1,15 +1,18 @@
 package _case_study.model.facility;
 
 public abstract class Facility {
-        private String nameService;
-        private String usableArea;
-        private int rentCost;
-        private int maximumPeople;
+    private String nameService;
+    private String usableArea;
+    private int rentCost;
+    private int maximumPeople;
 
     public Facility() {
     }
 
-    public Facility(String nameService, String usableArea, int rentCost, int maximumPeople) {
+    public Facility(String nameService,
+                    String usableArea,
+                    int rentCost,
+                    int maximumPeople) {
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.rentCost = rentCost;

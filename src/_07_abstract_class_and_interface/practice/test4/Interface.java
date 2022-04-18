@@ -2,65 +2,14 @@ package _07_abstract_class_and_interface.practice.test4;
 
 public class Interface {
     public static void main(String[] args) {
-
-        Edible stuff = new Chicken();
-
-        eat(stuff);
-
-        stuff = new Duck();
-
-        eat(stuff);
-
-        stuff = new Broccoli();
-
-        eat(stuff);
-
-    }
-
-    public static void eat(Edible stuff) {
-
-        stuff.howToEat();
-
-    }
-
-    interface Edible {
-
-        public String howToEat();
-
-    }
-
-    static class Chicken implements Edible {
-
-        @Override
-
-        public String howToEat() {
-
-            return "Fry it";
-
-        }
-
-    }
-
-    static class Duck implements Edible {
-
-        @Override
-
-        public String howToEat() {
-
-            return "Roast it";
-
-        }
-
-    }
-
-    static class Broccoli implements Edible {
-
-        @Override
-
-        public String howToEat() {
-
-            return "Stir-fry it";
-
+        int sum = 0;
+        int num1 = 0;
+        int num2 = 1;
+        for (int i = 0; i <20; i++) {
+            sum = num1 + num2;
+            num1 = num2;
+            num2 = sum;
+            System.out.println(sum);
         }
 
     }

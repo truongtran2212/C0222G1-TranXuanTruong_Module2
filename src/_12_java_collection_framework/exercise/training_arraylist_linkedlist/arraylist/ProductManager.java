@@ -70,16 +70,24 @@ public class ProductManager {
     }
 
     public static void addProduct() {
-        System.out.println("Giá");
-        int price = Integer.parseInt(input.nextLine());
-        System.out.println("Tên");
-        String nameProduct = input.nextLine();
         System.out.println("id");
         int id = Integer.parseInt(input.nextLine());
-        myList.add(new Product(id, nameProduct, price));
-
-        diplay();
-
+        boolean flag = true;
+        for (int i = 0; i < myList.size(); i++) {
+            if(myList.get(i).getId() == id ){
+                flag =  false;
+            }
+        }
+        if(!flag){
+            System.out.println("Đã có mặt hàng này");
+        }else{
+            System.out.println("Giá");
+            int price = Integer.parseInt(input.nextLine());
+            System.out.println("Tên");
+            String nameProduct = input.nextLine();
+            myList.add(new Product(id, nameProduct, price));
+            diplay();
+        }
     }
 
     public static void fixProduct() {
@@ -104,8 +112,6 @@ public class ProductManager {
         if (!flag) {
             System.out.println("Không có id này: ");
         }
-
-
     }
 
     public static void remove() {

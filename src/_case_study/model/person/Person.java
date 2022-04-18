@@ -4,8 +4,8 @@ public abstract class Person {
     private int id;
     private int age;
     private String name;
-    private int phoneNumber;
-    private int idCardNumber;
+    private String phoneNumber;
+    private String idCardNumber;
     private String email;
     private String gender;
 
@@ -15,8 +15,8 @@ public abstract class Person {
     public Person(int id,
                   int age,
                   String name,
-                  int phoneNumber,
-                  int idCardNumber,
+                  String phoneNumber,
+                  String idCardNumber,
                   String email,
                   String gender) {
         this.id = id;
@@ -52,19 +52,19 @@ public abstract class Person {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getIdCardNumber() {
+    public String getIdCardNumber() {
         return idCardNumber;
     }
 
-    public void setIdCardNumber(int idCardNumber) {
+    public void setIdCardNumber(String idCardNumber) {
         this.idCardNumber = idCardNumber;
     }
 
@@ -93,7 +93,7 @@ public abstract class Person {
                 ", idCardNumber=" + idCardNumber +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
-                '}';
+                ',';
     }
 }
 
