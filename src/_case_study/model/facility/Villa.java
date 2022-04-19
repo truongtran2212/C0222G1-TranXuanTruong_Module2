@@ -2,27 +2,27 @@ package _case_study.model.facility;
 
 public class Villa extends Facility {
     private String roomStandard;
-    private String poolArea;
+    private double poolArea;
     private int floor;
 
     public Villa() {
     }
 
-    public Villa(String roomStandard, String poolArea, int floor) {
+    public Villa(String roomStandard, double poolArea, int floor) {
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.floor = floor;
     }
 
     public Villa(String nameService,
-                 String usableArea,
+                 double usableArea,
                  int rentCost,
                  int maximumPeople,
+                 String typeRent,
                  String roomStandard,
-                 String poolArea,
+                 double poolArea,
                  int floor) {
-
-        super(nameService, usableArea, rentCost, maximumPeople);
+        super(nameService, usableArea, rentCost, maximumPeople, typeRent);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.floor = floor;
@@ -36,11 +36,11 @@ public class Villa extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public String getPoolArea() {
+    public double getPoolArea() {
         return poolArea;
     }
 
-    public void setPoolArea(String poolArea) {
+    public void setPoolArea(double poolArea) {
         this.poolArea = poolArea;
     }
 
@@ -50,5 +50,14 @@ public class Villa extends Facility {
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    @Override
+    public String toString() {
+        return "Villa{" + super.toString() +
+                " roomStandard='" + roomStandard + '\'' +
+                ", poolArea=" + poolArea +
+                ", floor=" + floor +
+                '}';
     }
 }

@@ -2,6 +2,7 @@ package _case_study.controller;
 
 import _case_study.service.impl.CustomerServiceImpl;
 import _case_study.service.impl.EmployeeServiceImpl;
+import _case_study.service.impl.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -115,10 +116,12 @@ public class FuramaController {
 
     public static void displayMenuFacility() {
 
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
+
         while (true) {
             System.out.println("1. Display list facility");
             System.out.println("2. Add new facility");
-            System.out.println("3. Edit facility");
+            System.out.println("3. Display list facility maintenance");
             System.out.println("4. Return main menu");
 
             System.out.println("Chọn 1 option ");
@@ -127,10 +130,10 @@ public class FuramaController {
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
-
+                    facilityService.display();
                     break;
                 case 2:
-
+                    addNewMenuFacility();
                     break;
                 case 3:
 
@@ -141,7 +144,39 @@ public class FuramaController {
             }
         }
     }
+    public static void addNewMenuFacility() {
 
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
+
+        while (true) {
+            System.out.println("1. Add new villa");
+            System.out.println("2. Add new house");
+            System.out.println("3. Add new room");
+            System.out.println("4. Return main menu");
+
+            System.out.println("Chọn 1 option ");
+
+
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+                    facilityService.addNewVilla();
+                    displayMenuFacility();
+                    break;
+                case 2:
+                    facilityService.addNewHouse();
+                    displayMenuFacility();
+                    break;
+                case 3:
+                    facilityService.addNewRoom();
+                    displayMenuFacility();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+            }
+        }
+    }
     public static void displayMenuBooking() {
 
         while (true) {

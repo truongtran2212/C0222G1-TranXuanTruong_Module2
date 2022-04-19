@@ -19,6 +19,8 @@ public abstract class Person {
                   String idCardNumber,
                   String email,
                   String gender) {
+
+
         this.id = id;
         this.age = age;
         this.name = name;

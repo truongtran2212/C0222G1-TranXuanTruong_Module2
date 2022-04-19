@@ -2,21 +2,24 @@ package _case_study.model.facility;
 
 public abstract class Facility {
     private String nameService;
-    private String usableArea;
+    private double usableArea;
     private int rentCost;
     private int maximumPeople;
+    private String typeRent;
 
     public Facility() {
     }
 
     public Facility(String nameService,
-                    String usableArea,
+                    double usableArea,
                     int rentCost,
-                    int maximumPeople) {
+                    int maximumPeople,
+                    String typeRent) {
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.rentCost = rentCost;
         this.maximumPeople = maximumPeople;
+        this.typeRent = typeRent;
     }
 
     public String getNameService() {
@@ -27,11 +30,11 @@ public abstract class Facility {
         this.nameService = nameService;
     }
 
-    public String getUsableArea() {
+    public double getUsableArea() {
         return usableArea;
     }
 
-    public void setUsableArea(String usableArea) {
+    public void setUsableArea(double usableArea) {
         this.usableArea = usableArea;
     }
 
@@ -49,5 +52,23 @@ public abstract class Facility {
 
     public void setMaximumPeople(int maximumPeople) {
         this.maximumPeople = maximumPeople;
+    }
+
+    public String getTypeRent() {
+        return typeRent;
+    }
+
+    public void setTypeRent(String typeRent) {
+        this.typeRent = typeRent;
+    }
+
+    @Override
+    public String toString() {
+        return "nameService='" + nameService + '\'' +
+                ", usableArea=" + usableArea +
+                ", rentCost=" + rentCost +
+                ", maximumPeople=" + maximumPeople +
+                ", typeRent='" + typeRent + '\'' +
+                ',';
     }
 }

@@ -13,13 +13,14 @@ public class House extends Facility {
     }
 
     public House(String nameService,
-                 String usableArea,
+                 double usableArea,
                  int rentCost,
                  int maximumPeople,
+                 String typeRent,
                  String roomStandard,
                  int floor) {
 
-        super(nameService, usableArea, rentCost, maximumPeople);
+        super(nameService, usableArea, rentCost, maximumPeople, typeRent);
         this.roomStandard = roomStandard;
         this.floor = floor;
     }
@@ -38,5 +39,13 @@ public class House extends Facility {
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" + super.toString() +
+                " roomStandard='" + roomStandard + '\'' +
+                ", floor=" + floor +
+                '}';
     }
 }
