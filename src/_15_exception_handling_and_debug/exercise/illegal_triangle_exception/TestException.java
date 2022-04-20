@@ -13,15 +13,16 @@ public class TestException {
             try {
 
                 System.out.println("Cạnh thứ nhất");
-                int x = Integer.parseInt(scanner.nextLine());
+                double x = Double.parseDouble(scanner.nextLine());
 
                 System.out.println("Cạnh thứ hai");
-                int y = Integer.parseInt(scanner.nextLine());
+                double y = Double.parseDouble(scanner.nextLine());
 
                 System.out.println("Cạnh thứ ba");
-                int z = Integer.parseInt(scanner.nextLine());
+                double z = Double.parseDouble(scanner.nextLine());
 
-                int sum = x + y + z;
+
+                 double   sum = x + y + z;
                 test(x, y, z);
 
                 System.out.println("Tổng của 3 cạnh tam giác là: " + sum);
@@ -36,7 +37,7 @@ public class TestException {
         }
     }
 
-    public static void test (int x, int y , int z) throws IllegalTriangleException{
+    public static void test (double x, double y , double z) throws IllegalTriangleException{
         if ((x < 0 || y < 0 || z < 0)) {
             throw new IllegalTriangleException("Bạn phải nhập số âm");
         }
