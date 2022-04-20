@@ -3,11 +3,12 @@ package _15_exception_handling_and_debug.practice;
 import com.sun.org.apache.xerces.internal.impl.xs.SchemaNamespaceSupport;
 import javafx.scene.transform.Scale;
 
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args)  throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("number 1: ");
