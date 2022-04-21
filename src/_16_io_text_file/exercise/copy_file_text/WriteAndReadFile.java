@@ -29,7 +29,7 @@ public class WriteAndReadFile {
     public void writeFile(String path,String line) {
         File file = new File(path);
         try {
-            FileWriter fileWriter = new FileWriter(file, false);
+            FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(line);
             bufferedWriter.newLine();
