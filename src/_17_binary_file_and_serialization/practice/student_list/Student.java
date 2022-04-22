@@ -3,6 +3,8 @@ package _17_binary_file_and_serialization.practice.student_list;
 import java.io.Serializable;
 
 public class Student implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String name;
     private String address;
@@ -38,5 +40,14 @@ public class Student implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

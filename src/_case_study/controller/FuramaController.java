@@ -16,6 +16,8 @@ public class FuramaController {
 
     public static void displayMainMenu() {
         while (true) {
+
+            System.out.println("--------Main Menu--------");
             System.out.println("1. Employee Management");
             System.out.println("2. Customer Management");
             System.out.println("3. Facility Management");
@@ -56,7 +58,7 @@ public class FuramaController {
 
 
         while (true) {
-
+            System.out.println("--------Employee Menu----------");
             System.out.println("1. Display list employees");
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
@@ -88,6 +90,7 @@ public class FuramaController {
         CustomerServiceImpl customerService = new CustomerServiceImpl();
 
         while (true) {
+            System.out.println("--------Customer Menu----------");
             System.out.println("1. Display list customer");
             System.out.println("2. Add new customer");
             System.out.println("3. Edit customer");
@@ -119,6 +122,7 @@ public class FuramaController {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
         while (true) {
+            System.out.println("--------Facility Menu----------");
             System.out.println("1. Display list facility");
             System.out.println("2. Add new facility");
             System.out.println("3. Display list facility maintenance");
@@ -149,6 +153,7 @@ public class FuramaController {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
         while (true) {
+            System.out.println("--------Facility New Menu----------");
             System.out.println("1. Add new villa");
             System.out.println("2. Add new house");
             System.out.println("3. Add new room");
@@ -180,6 +185,7 @@ public class FuramaController {
     public static void displayMenuBooking() {
 
         while (true) {
+            System.out.println("--------Booking Menu----------");
             System.out.println("1. Add new booking");
             System.out.println("2. display list booking");
             System.out.println("3. Create new constracts");
@@ -216,6 +222,7 @@ public class FuramaController {
     public static void displayMenuPromotion() {
 
         while (true) {
+            System.out.println("--------Promotion Menu----------");
             System.out.println("1. Display list customers use service");
             System.out.println("2. Display list customers get voucher");
             System.out.println("3. Return main menu");
