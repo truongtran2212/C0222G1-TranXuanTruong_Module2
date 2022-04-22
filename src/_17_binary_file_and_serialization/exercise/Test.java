@@ -10,6 +10,32 @@ public class Test {
     public static Scanner scanner = new Scanner(System.in);
     public static List<Product> products = new ArrayList<>();
 
+    public static void main(String[] args) {
+        while (true) {
+
+            System.out.println("-----------Menu------------");
+            System.out.println("1. Thêm sản phẩm");
+            System.out.println("2. Hiển thị sản phẩm");
+            System.out.println("3. tìm kiếm thông tin sản phẩm");
+            System.out.println("4. Out khỏi chương trình");
+            int choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+                    addProduct();
+                    break;
+                case 2:
+                    diplay();
+                    break;
+                case 3:
+                    findInformationProduct();
+                    break;
+                case 4:
+                    System.exit(4);
+                    break;
+            }
+        }
+    }
+    
     public static void diplay() {
         products = InputAndOutputStream.readFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt");
 
@@ -56,31 +82,7 @@ public class Test {
         }
     }
 
-    public static void main(String[] args) {
-        while (true) {
 
-            System.out.println("-----------Menu------------");
-            System.out.println("1. Thêm sản phẩm");
-            System.out.println("2. Hiển thị sản phẩm");
-            System.out.println("3. tìm kiếm thông tin sản phẩm");
-            System.out.println("4. Out khỏi chương trình");
-            int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose) {
-                case 1:
-                    addProduct();
-                    break;
-                case 2:
-                    diplay();
-                    break;
-                case 3:
-                    findInformationProduct();
-                    break;
-                case 4:
-                    System.exit(4);
-                    break;
-            }
-        }
-    }
 
     public static void findInformationProduct() {
         products = InputAndOutputStream.readFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt");
