@@ -16,8 +16,6 @@ public class ReadCountry {
         try{
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-
-
             String line;
             while((line = bufferedReader.readLine()) != null && !line.equals("")){
                 String[] arr = line.split(",");

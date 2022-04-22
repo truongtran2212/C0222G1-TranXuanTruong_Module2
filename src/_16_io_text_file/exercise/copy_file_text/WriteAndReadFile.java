@@ -15,7 +15,7 @@ public class WriteAndReadFile {
         try {
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-            String line;
+            String line; // Dùng để lưu từng line khi chúng ta đi qua
             while ((line = bufferedReader.readLine()) != null && !line.equals("")) {
                 list.add(line);
             }
