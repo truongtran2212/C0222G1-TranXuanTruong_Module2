@@ -12,7 +12,7 @@ public class Customer extends Person {
         this.typeOfCustomer = typeOfCustomer;
     }
 
-    public Customer(int id,
+    public Customer(String id,
                     int age,
                     String name,
                     String phoneNumber,

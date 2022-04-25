@@ -1,7 +1,7 @@
 package _case_study.model.person;
 
 public abstract class Person {
-    private int id;
+    private String id;
     private int age;
     private String name;
     private String phoneNumber;
@@ -12,7 +12,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(int id,
+    public Person(String id,
                   int age,
                   String name,
                   String phoneNumber,
@@ -30,11 +30,11 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,61 +1,64 @@
 package _case_study.model.booking_contract;
 
+import _case_study.model.facility.Facility;
+import _case_study.model.person.Customer;
+
 public class Booking {
-    private int idBooking;
-    private int startDay;
-    private int endDay;
-    private String idCustomer;
+    private int id;
+    private CharSequence startDate;
+    private CharSequence endDate;
+    private Customer idCustomer;
     private String nameService;
-    private String typeOfService;
+    private Facility idService;
 
     public Booking() {
     }
 
-    public Booking(int idBooking,
-                   int startDay,
-                   int endDay,
-                   String idCustomer,
+    public Booking(int id,
+                   CharSequence startDate,
+                   CharSequence endDate,
+                   Customer idCustomer,
                    String nameService,
-                   String typeOfService) {
+                   Facility idService) {
 
 
-        this.idBooking = idBooking;
-        this.startDay = startDay;
-        this.endDay = endDay;
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.idCustomer = idCustomer;
         this.nameService = nameService;
-        this.typeOfService = typeOfService;
+        this.idService = idService;
     }
 
-    public int getIdBooking() {
-        return idBooking;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBooking(int idBooking) {
-        this.idBooking = idBooking;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getStartDay() {
-        return startDay;
+    public CharSequence getStartDate() {
+        return startDate;
     }
 
-    public void setStartDay(int startDay) {
-        this.startDay = startDay;
+    public void setStartDate(CharSequence startDate) {
+        this.startDate = startDate;
     }
 
-    public int getEndDay() {
-        return endDay;
+    public CharSequence getEndDate() {
+        return endDate;
     }
 
-    public void setEndDay(int endDay) {
-        this.endDay = endDay;
+    public void setEndDate(CharSequence endDate) {
+        this.endDate = endDate;
     }
 
-    public String getIdCustomer() {
+    public Customer getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(String idCustomer) {
+    public void setIdCustomer(Customer idCustomer) {
         this.idCustomer = idCustomer;
     }
 
@@ -67,11 +70,23 @@ public class Booking {
         this.nameService = nameService;
     }
 
-    public String getTypeOfService() {
-        return typeOfService;
+    public Facility getIdService() {
+        return idService;
     }
 
-    public void setTypeOfService(String typeOfService) {
-        this.typeOfService = typeOfService;
+    public void setIdService(Facility idService) {
+        this.idService = idService;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", idCustomer=" + idCustomer +
+                ", nameService='" + nameService + '\'' +
+                ", idService=" + idService +
+                '}';
     }
 }

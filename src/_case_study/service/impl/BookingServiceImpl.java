@@ -2,8 +2,8 @@ package _case_study.service.impl;
 
 import _case_study.service.BookingService;
 
-public class BookingServiceImpl implements BookingService {
 
+public class BookingServiceImpl implements BookingService {
     @Override
     public void display() {
 
@@ -23,4 +23,5 @@ public class BookingServiceImpl implements BookingService {
     public void delete() {
 
     }
+
 }

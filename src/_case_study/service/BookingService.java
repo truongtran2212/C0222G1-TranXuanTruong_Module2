@@ -1,5 +1,5 @@
 package _case_study.service;
 
-public interface BookingService  extends Service{
+public interface BookingService extends Service{
 
 }

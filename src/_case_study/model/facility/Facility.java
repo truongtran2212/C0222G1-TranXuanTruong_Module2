@@ -1,25 +1,36 @@
 package _case_study.model.facility;
 
 public abstract class Facility {
+    private String id;
     private String nameService;
-    private double usableArea;
-    private int rentCost;
-    private int maximumPeople;
+    private String usableArea;
+    private String rentCost;
+    private String maximumPeople;
     private String typeRent;
 
     public Facility() {
     }
 
-    public Facility(String nameService,
-                    double usableArea,
-                    int rentCost,
-                    int maximumPeople,
+    public Facility(String id,
+                    String nameService,
+                    String usableArea,
+                    String rentCost,
+                    String maximumPeople,
                     String typeRent) {
+        this.id = id;
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.rentCost = rentCost;
         this.maximumPeople = maximumPeople;
         this.typeRent = typeRent;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNameService() {
@@ -30,27 +41,27 @@ public abstract class Facility {
         this.nameService = nameService;
     }
 
-    public double getUsableArea() {
+    public String getUsableArea() {
         return usableArea;
     }
 
-    public void setUsableArea(double usableArea) {
+    public void setUsableArea(String usableArea) {
         this.usableArea = usableArea;
     }
 
-    public int getRentCost() {
+    public String getRentCost() {
         return rentCost;
     }
 
-    public void setRentCost(int rentCost) {
+    public void setRentCost(String rentCost) {
         this.rentCost = rentCost;
     }
 
-    public int getMaximumPeople() {
+    public String getMaximumPeople() {
         return maximumPeople;
     }
 
-    public void setMaximumPeople(int maximumPeople) {
+    public void setMaximumPeople(String maximumPeople) {
         this.maximumPeople = maximumPeople;
     }
 
@@ -64,7 +75,9 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "nameService='" + nameService + '\'' +
+        return "Facility{" +
+                "id='" + id + '\'' +
+                ", nameService='" + nameService + '\'' +
                 ", usableArea=" + usableArea +
                 ", rentCost=" + rentCost +
                 ", maximumPeople=" + maximumPeople +

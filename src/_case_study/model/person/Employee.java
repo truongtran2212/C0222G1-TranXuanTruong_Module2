@@ -14,7 +14,7 @@ public class Employee extends Person {
         this.staffPosition = staffPosition;
     }
 
-    public Employee(int id,
+    public Employee(String id,
                     int age,
                     String name,
                     String phoneNumber,

@@ -61,4 +61,15 @@ public class Contract {
     public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
     }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "numberContract=" + numberContract +
+                ", idBooking=" + idBooking +
+                ", beforeMoney=" + beforeMoney +
+                ", totalMoney=" + totalMoney +
+                ", idCustomer='" + idCustomer + '\'' +
+                '}';
+    }
 }

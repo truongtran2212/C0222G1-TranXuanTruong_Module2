@@ -11,13 +11,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     static List<Employee> employeeList = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
     static {
-        employeeList.add(new Employee(1,20,"Trường"
+        employeeList.add(new Employee("1",20,"Trường"
                 ,"0903x55555", "0123456789","truongtran2212","nam"
                 ,"Đại học",100000000,"Lễ tân"));
-        employeeList.add(new Employee(2,25,"Khoa"
+        employeeList.add(new Employee("2",25,"Khoa"
                 ,"0903x77777", "123123123","khoanguyen123","nam"
                 ,"Đại học",100000000,"chuyên viên"));
-        employeeList.add(new Employee(3,30,"Tùng"
+        employeeList.add(new Employee("3",30,"Tùng"
                 ,"0903x99999", "9876543210","tungngo123","nam"
                 ,"Đại học",100000000,"giám sát"));
 
@@ -39,18 +39,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         System.out.println("Nhập id nhân viên:");
-        int id = Integer.parseInt(input.nextLine());
+        String id = input.nextLine();
 
         boolean flag = true;
         for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getId() == id) {
+            if (employeeList.get(i).getId().equals(id)) {
                     flag = false;
             }
         }
             if (!flag) {
                 System.out.println("Đã có nhân viên sử dụng id này");
 
-            }else {
+            }
+            else {
                 System.out.println("Ở resort chưa có nhân viên sử dụng id này: ");
                 System.out.println("Bắt đầu thêm nhân viên mới: ");
 
@@ -175,11 +176,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         System.out.println("Nhập id nhân viên:");
-        int id = Integer.parseInt(input.nextLine());
+        String id = input.nextLine();
 
         boolean flag = false;
         for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getId() == id) {
+            if (employeeList.get(i).getId().equals(id)) {
                 employeeList.remove(i);
 
                 System.out.println("Ở resort có nhân viên sử dụng id này: ");

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Test {
     public static Scanner scanner = new Scanner(System.in);
     public static List<Product> products = new ArrayList<>();
-
+   public static final String FILE_NAME = "src\\_17_binary_file_and_serialization\\exercise\\Test.txt";
     public static void main(String[] args) {
         while (true) {
 
@@ -35,9 +35,9 @@ public class Test {
             }
         }
     }
-    
+
     public static void diplay() {
-        products = InputAndOutputStream.readFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt");
+        products = InputAndOutputStream.readFile(FILE_NAME);
 
         for (Product item : products) {
             System.out.println(item);
@@ -45,7 +45,7 @@ public class Test {
     }
 
     public static void addProduct() {
-        products = InputAndOutputStream.readFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt");
+        products = InputAndOutputStream.readFile(FILE_NAME);
         while (true) {
 
             System.out.println("Nhập id sản phẩm");
@@ -71,7 +71,7 @@ public class Test {
                 products.add(product);
                 System.out.println("Đã thêm thành công");
                 try {
-                    InputAndOutputStream.writeFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt", products);
+                    InputAndOutputStream.writeFile(FILE_NAME, products);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -85,7 +85,7 @@ public class Test {
 
 
     public static void findInformationProduct() {
-        products = InputAndOutputStream.readFile("src\\_17_binary_file_and_serialization\\exercise\\Test.txt");
+        products = InputAndOutputStream.readFile(FILE_NAME);
         System.out.println("Nhập tên sản phẩm");
         String nameProduct = scanner.nextLine();
         boolean flag = false;
@@ -93,7 +93,7 @@ public class Test {
             if (products.get(i).getNameProduct().toLowerCase().contains(nameProduct.toLowerCase())) {
                 System.out.println(products.get(i).toString());
                 flag = true;
-                break;
+
             }
         }
         if (!flag) {
