@@ -1,4 +1,4 @@
-package _18_string_regex.practice.validate_email;
+package _19_string_regex.practice.validate_email;
 
 public class ValidateEmail {
         private static EmailExample emailExample;

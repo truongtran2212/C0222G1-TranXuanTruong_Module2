@@ -1,4 +1,4 @@
-package _18_string_regex.exercise;
+package _19_string_regex.exercise;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
