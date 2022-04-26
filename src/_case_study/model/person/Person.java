@@ -2,7 +2,7 @@ package _case_study.model.person;
 
 public abstract class Person {
     private String id;
-    private int age;
+    private String dayOfBirth;
     private String name;
     private String phoneNumber;
     private String idCardNumber;
@@ -13,7 +13,7 @@ public abstract class Person {
     }
 
     public Person(String id,
-                  int age,
+                  String dayOfBirth,
                   String name,
                   String phoneNumber,
                   String idCardNumber,
@@ -22,7 +22,7 @@ public abstract class Person {
 
 
         this.id = id;
-        this.age = age;
+        this.dayOfBirth = dayOfBirth;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.idCardNumber = idCardNumber;
@@ -38,12 +38,12 @@ public abstract class Person {
         this.id = id;
     }
 
-    public int getAge() {
-        return age;
+    public String getDayOfBirth() {
+        return dayOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
     }
 
     public String getName() {
@@ -89,7 +89,7 @@ public abstract class Person {
     @Override
     public String toString() {
         return "id=" + id +
-                ", age=" + age +
+                ", age=" + dayOfBirth +
                 ", name='" + name + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", idCardNumber=" + idCardNumber +

@@ -3,6 +3,8 @@ package _case_study.service.impl;
 import _case_study.model.person.Customer;
 
 import _case_study.service.CustomerService;
+import _case_study.ultis.RegexData;
+import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
 
 
 import java.util.LinkedList;
@@ -13,18 +15,19 @@ import java.util.Scanner;
 public class CustomerServiceImpl implements CustomerService {
     static List<Customer> customerList = new LinkedList<>();
     static Scanner input = new Scanner(System.in);
+    static final String DATE_OF_BIRTH = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
 
     static {
-        customerList.add(new Customer("1", 20, "Trường", "093x888888",
+        customerList.add(new Customer("1", "20", "Trường", "093x888888",
                 "11111111", "truongtran2212", "nam", "12 Trần Phú", "Diamond"));
-        customerList.add(new Customer("2", 25, "Trung", "093x999999",
+        customerList.add(new Customer("2", "25", "Trung", "093x999999",
                 "22222222", "trungngo123", "nam", "12 Thanh Thủy", "Gold"));
-        customerList.add(new Customer("3", 30, "Chung", "093x666666",
+        customerList.add(new Customer("3", "30", "Chung", "093x666666",
                 "33333333", "chungtran321", "nam", "12 Lê Duẩn", "Silver"));
 
     }
 
-
+    // Hiển thị thông tin khách hàng
     @Override
     public void display() {
         for (Customer customer : customerList) {
@@ -33,6 +36,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+
+    // Thêm mới khách hàng
     public void addNew() {
         System.out.println("Nhập id khách hàng:");
         String id = input.nextLine();
@@ -53,9 +58,8 @@ public class CustomerServiceImpl implements CustomerService {
 
             System.out.println("--------------------------");
 
-
-            System.out.println("Nhập tuổi khách hàng:");
-            int age = Integer.parseInt(input.nextLine());
+            System.out.println("Nhập ngày tháng năm sinh của khách hàng:");
+            String dayOfBirth = RegexData.regexAge(input.nextLine(),DATE_OF_BIRTH);
 
             System.out.println("Nhập tên khách hàng:");
             String name = input.nextLine();
@@ -113,11 +117,10 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             }
 
-            Customer customer = new Customer(id, age, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
+            Customer customer = new Customer(id, dayOfBirth, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
             customerList.add(customer);
             System.out.println("Đã thêm mới thành công.");
         }
-        System.out.println("------------------------");
     }
 
     @Override
@@ -142,8 +145,8 @@ public class CustomerServiceImpl implements CustomerService {
 
                 System.out.println("---------------------");
 
-                System.out.println("Nhập tuổi khách hàng:");
-                int age = Integer.parseInt(input.nextLine());
+                System.out.println("Nhập ngày tháng năm sinh của khách hàng:");
+                String dayOfBirth = input.nextLine();
 
                 System.out.println("Nhập tên khách hàng:");
                 String name = input.nextLine();
@@ -165,6 +168,7 @@ public class CustomerServiceImpl implements CustomerService {
 
                 System.out.println("Nhập loại khách hàng: ");
 
+
                 String typeOfCustomer = "";
 
                 System.out.println("1. Diamond");
@@ -175,7 +179,6 @@ public class CustomerServiceImpl implements CustomerService {
 
                 int choose = Integer.parseInt(input.nextLine());
                 boolean check = true;
-
                 while (check) {
                     switch (choose) {
                         case 1:
@@ -201,7 +204,7 @@ public class CustomerServiceImpl implements CustomerService {
                     }
                 }
 
-                customerList.add(new Customer(id, age, name, phoneNumber,
+                customerList.add(new Customer(id, dayOfBirth, name, phoneNumber,
                         idCardNumber, email, gender, address, typeOfCustomer));
                 System.out.println("Thông tin của khách hàng đã được sửa đổi. ");
                 flag = true;

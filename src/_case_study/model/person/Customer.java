@@ -13,7 +13,7 @@ public class Customer extends Person {
     }
 
     public Customer(String id,
-                    int age,
+                    String dayOfBirth,
                     String name,
                     String phoneNumber,
                     String idCardNumber,
@@ -21,7 +21,7 @@ public class Customer extends Person {
                     String gender,
                     String address,
                     String typeOfCustomer) {
-        super(id, age, name, phoneNumber, idCardNumber, email, gender);
+        super(id, dayOfBirth, name, phoneNumber, idCardNumber, email, gender);
         this.address = address;
         this.typeOfCustomer = typeOfCustomer;
     }

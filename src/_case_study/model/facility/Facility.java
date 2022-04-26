@@ -3,9 +3,9 @@ package _case_study.model.facility;
 public abstract class Facility {
     private String id;
     private String nameService;
-    private String usableArea;
-    private String rentCost;
-    private String maximumPeople;
+    private double usableArea;
+    private int rentCost;
+    private int maximumPeople;
     private String typeRent;
 
     public Facility() {
@@ -13,9 +13,9 @@ public abstract class Facility {
 
     public Facility(String id,
                     String nameService,
-                    String usableArea,
-                    String rentCost,
-                    String maximumPeople,
+                    double usableArea,
+                    int rentCost,
+                    int maximumPeople,
                     String typeRent) {
         this.id = id;
         this.nameService = nameService;
@@ -41,27 +41,27 @@ public abstract class Facility {
         this.nameService = nameService;
     }
 
-    public String getUsableArea() {
+    public double getUsableArea() {
         return usableArea;
     }
 
-    public void setUsableArea(String usableArea) {
+    public void setUsableArea(double usableArea) {
         this.usableArea = usableArea;
     }
 
-    public String getRentCost() {
+    public int getRentCost() {
         return rentCost;
     }
 
-    public void setRentCost(String rentCost) {
+    public void setRentCost(int rentCost) {
         this.rentCost = rentCost;
     }
 
-    public String getMaximumPeople() {
+    public int getMaximumPeople() {
         return maximumPeople;
     }
 
-    public void setMaximumPeople(String maximumPeople) {
+    public void setMaximumPeople(int maximumPeople) {
         this.maximumPeople = maximumPeople;
     }
 

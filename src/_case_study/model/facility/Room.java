@@ -12,9 +12,9 @@ public class Room extends Facility {
 
     public Room(String id,
                 String nameService,
-                String usableArea,
-                String rentCost,
-                String maximumPeople,
+                double usableArea,
+                int rentCost,
+                int maximumPeople,
                 String typeRent,
                 String freeService) {
         super(id, nameService, usableArea, rentCost, maximumPeople, typeRent);

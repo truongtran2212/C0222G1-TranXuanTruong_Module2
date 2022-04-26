@@ -10,7 +10,6 @@ public class Main {
         ReadCountry readCountry = new ReadCountry();
 
         Country country;
-
         try {
             List<String[]> list = readCountry.readFile("src\\_16_io_text_file\\exercise\\read_file_csv\\file.csv");
             for (String[] item : list) {
