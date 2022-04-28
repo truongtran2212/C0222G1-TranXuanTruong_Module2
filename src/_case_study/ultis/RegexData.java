@@ -11,7 +11,6 @@ public class RegexData {
 
     public static String regexString(String temp, String regex, String error) {
         boolean check = true;
-        // Chưa hiểu đoạn này!!!
         do {
             if (temp.matches(regex)) {  // matches để so có khớp hay không
                 check = false;
@@ -23,6 +22,7 @@ public class RegexData {
         return temp;
     }
 
+   // Chưa hiểu đoạn này!!!
     public static String regexAge(String temp, String regex) {
         boolean check = true;
         while (check) {

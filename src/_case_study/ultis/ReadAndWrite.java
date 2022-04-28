@@ -26,6 +26,13 @@ public class ReadAndWrite {
 
     public static void writeFile(String path, String listLine) {
         File file = new File(path);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
             bufferedWriter.write(listLine);

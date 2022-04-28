@@ -1,12 +1,16 @@
 package _case_study.model.facility;
 
-public abstract class Facility {
+import java.io.Serializable;
+
+
+public abstract class Facility implements Serializable{
     private String id;
     private String nameService;
     private double usableArea;
     private int rentCost;
     private int maximumPeople;
     private String typeRent;
+
 
     public Facility() {
     }
@@ -75,7 +79,7 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "Facility{" +
+        return
                 "id='" + id + '\'' +
                 ", nameService='" + nameService + '\'' +
                 ", usableArea=" + usableArea +
@@ -84,4 +88,6 @@ public abstract class Facility {
                 ", typeRent='" + typeRent + '\'' +
                 ',';
     }
+
+
 }

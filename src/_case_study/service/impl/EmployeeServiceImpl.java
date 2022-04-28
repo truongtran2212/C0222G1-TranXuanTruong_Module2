@@ -3,6 +3,7 @@ package _case_study.service.impl;
 import _case_study.model.person.Employee;
 import _case_study.service.EmployeeService;
 import _case_study.ultis.ReadAndWrite;
+import _case_study.ultis.TryCatch;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -16,21 +17,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public static final String FILE_EMPLOYEE = "src\\_case_study\\data\\employee.csv";
     static List<String[]> list;
     static final String COMMA = ",";
-
-
-//    static EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-//    static {
-//        employeeList.add(new Employee("1","20","Trường"
-//                ,"0903x55555", "0123456789","truongtran2212","nam"
-//                ,"Đại học",100000000,"Lễ tân"));
-//        employeeList.add(new Employee("2","25","Khoa"
-//                ,"0903x77777", "123123123","khoanguyen123","nam"
-//                ,"Đại học",100000000,"chuyên viên"));
-//        employeeList.add(new Employee("3","30","Tùng"
-//                ,"0903x99999", "9876543210","tungngo123","nam"
-//                ,"Đại học",100000000,"giám sát"));
-//
-//    }
 
     @Override
     // Hiển thị
@@ -53,10 +39,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void addNew() {
         list = ReadAndWrite.readFile(FILE_EMPLOYEE);
 
-//        System.out.println("Tìm kiếm nhân viên thông qua id:");
-//        System.out.println("------------------------------");
-
-
         System.out.println("Nhập id nhân viên:");
         String id = input.nextLine();
 
@@ -64,6 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         for (int i = 0; i < employeeList.size(); i++) {
             if (employeeList.get(i).getId().equals(id)) {
                 flag = false;
+                break;
             }
         }
         if (!flag) {
@@ -105,12 +88,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.println("3. Đại học");
             System.out.println("4. Sau đại học");
 
-
-            int choose = Integer.parseInt(input.nextLine());
+//            int choose = Integer.parseInt(input.nextLine());
             boolean check = true;
-
             while (check) {
-                switch (choose) {
+                switch (TryCatch.check()) {
                     case 1:
                         level += "Trung cấp";
                         check = false;
@@ -126,6 +107,9 @@ public class EmployeeServiceImpl implements EmployeeService {
                     case 4:
                         level += "Sau đại học";
                         check = false;
+                        break;
+                    default:
+                        System.out.println("Input number 1 to 4");
                         break;
                 }
             }
@@ -146,11 +130,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             // Xét chức vụ
 
-            int choose1 = Integer.parseInt(input.nextLine());
+//            int choose1 = Integer.parseInt(input.nextLine());
             boolean checkPosition = true;
 
             while (checkPosition) {
-                switch (choose1) {
+                switch (TryCatch.check()) {
                     case 1:
                         staffPosition += "Lễ tân";
                         checkPosition = false;
@@ -175,9 +159,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                         staffPosition += "Giám đốc";
                         checkPosition = false;
                         break;
+                    default:
+                        System.out.println("Input number 1 to 6");
+                        break;
                 }
             }
-
             Employee employee = new Employee(id,
                     dayOfBirth,
                     name,
@@ -188,23 +174,27 @@ public class EmployeeServiceImpl implements EmployeeService {
                     level,
                     salary,
                     staffPosition);
+
             employeeList.add(employee);
-            String listLine = id + COMMA + dayOfBirth + COMMA + name + COMMA + phoneNumber + COMMA + idCardNumber + COMMA + email + COMMA + gender + COMMA + level + COMMA + salary + COMMA + staffPosition;
+            // line này có tác dụng là gì.
+            String listLine = id + COMMA + dayOfBirth + COMMA + name +
+                    COMMA + phoneNumber + COMMA + idCardNumber + COMMA + email +
+                    COMMA + gender + COMMA + level + COMMA + salary + COMMA + staffPosition;
+
             ReadAndWrite.writeFile(FILE_EMPLOYEE, listLine);
             System.out.println("Đã thêm mới thành công.");
+
+            System.out.println("-----------------------------");
         }
-        System.out.println("-----------------------------");
     }
 
     @Override
-
     // Chỉnh sửa thông tin của nhân viên
     public void edit() {
         list = ReadAndWrite.readFile(FILE_EMPLOYEE);
         display();
         System.out.println("Tìm kiếm nhân viên thông qua id:");
         System.out.println("------------------------------");
-
 
         System.out.println("Nhập id nhân viên:");
         String id = input.nextLine();
@@ -216,7 +206,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("Ở resort có nhân viên sử dụng id này: ");
                 System.out.println("Bắt đầu chỉnh sửa thông tin: ");
 
-                System.out.println("--------------------------");
+                System.out.println("-----------------------");
 
                 System.out.println("Nhập ngày tháng năm sinh của nhân viên:");
                 String dayOfBirth = input.nextLine();
@@ -236,7 +226,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("Nhập giới tính nhân viên:");
                 String gender = input.nextLine();
 
-
                 System.out.println("Nhập trình độ nhân viên: ");
                 String level = "";
 
@@ -246,11 +235,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("3. Đại học");
                 System.out.println("4. Sau đại học");
 
-                int choose = Integer.parseInt(input.nextLine());
+//                int choose = Integer.parseInt(input.nextLine());
                 boolean check = true;
 
                 while (check) {
-                    switch (choose) {
+                    switch (TryCatch.check()) {
                         case 1:
                             level += "Trung cấp";
                             check = false;
@@ -267,13 +256,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                             level += "Sau đại học";
                             check = false;
                             break;
+                        default:
+                            System.out.println("Input number 1 to 4");
+                            break;
                     }
                 }
 
-
                 System.out.println("Nhập lương nhân viên:");
                 int salary = Integer.parseInt(input.nextLine());
-
 
                 System.out.println("Nhập chức vụ nhân viên: ");
 
@@ -287,11 +277,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("5. Quản lý");
                 System.out.println("6. Giám đốc");
 
-                int choose1 = Integer.parseInt(input.nextLine());
-                boolean checkPosition = true;
 
+//                int choose1 = Integer.parseInt(input.nextLine());
+                boolean checkPosition = true;
                 while (checkPosition) {
-                    switch (choose1) {
+                    switch (TryCatch.check()) {
                         case 1:
                             staffPosition += "Lễ tân";
                             checkPosition = false;
@@ -316,18 +306,21 @@ public class EmployeeServiceImpl implements EmployeeService {
                             staffPosition += "Giám đốc";
                             checkPosition = false;
                             break;
+                        default:
+                            System.out.println("Input number 1 to 6");
+
                     }
                 }
-
                 employeeList.set(i, new Employee(id, dayOfBirth, name, phoneNumber,
                         idCardNumber, email, gender, level, salary, staffPosition));
 
                 File file = new File(FILE_EMPLOYEE);
                 file.delete();
 
-                for (Employee item: employeeList) {
+                String listLine;
 
-                    String listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
+                for (Employee item : employeeList) {
+                    listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
                             item.getPhoneNumber() + COMMA + item.getIdCardNumber() + COMMA + item.getEmail() + COMMA +
                             item.isGender() + COMMA + item.getLevel() + COMMA + item.getSalary() +
                             COMMA + item.getStaffPosition();

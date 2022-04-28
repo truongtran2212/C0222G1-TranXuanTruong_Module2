@@ -5,11 +5,12 @@ import _case_study.service.impl.BookingServiceImpl;
 import _case_study.service.impl.CustomerServiceImpl;
 import _case_study.service.impl.EmployeeServiceImpl;
 import _case_study.service.impl.FacilityServiceImpl;
+import _case_study.ultis.TryCatch;
+import org.junit.platform.commons.function.Try;
 
 import java.util.Scanner;
 
 public class FuramaController {
-    //    public static final boolean check = true;
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -29,9 +30,9 @@ public class FuramaController {
 
                 System.out.println("Chọn 1 option ");
 
-                int choose = Integer.parseInt(scanner.nextLine());
+//                int choose = Integer.parseInt(scanner.nextLine());
 
-                switch (choose) {
+                switch (TryCatch.check()) {
                     case 1:
                         displayMenuEmployee();
                         break;
@@ -50,6 +51,8 @@ public class FuramaController {
                     case 6:
                         System.exit(6);
                         break;
+                    default:
+                        System.out.println("Input number 1 to 6");
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -71,8 +74,8 @@ public class FuramaController {
 
                 System.out.println("Chọn 1 option ");
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
                         employeeService.display();
                         break;
@@ -83,8 +86,9 @@ public class FuramaController {
                         employeeService.edit();
                         break;
                     case 4:
-                        displayMainMenu();
-                        break;
+                        return;
+                    default:
+                        System.out.println("Input number 1 to 4");
 
                 }
             } catch (NumberFormatException e) {
@@ -108,8 +112,8 @@ public class FuramaController {
                 System.out.println("Chọn 1 option ");
 
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
                         customerService.display();
                         break;
@@ -120,8 +124,9 @@ public class FuramaController {
                         customerService.edit();
                         break;
                     case 4:
-                        displayMainMenu();
-                        break;
+                        return;
+                    default:
+                        System.out.println("Input number 1 to 4");
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -144,8 +149,8 @@ public class FuramaController {
                 System.out.println("Chọn 1 option ");
 
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
                         facilityService.display();
                         break;
@@ -156,8 +161,9 @@ public class FuramaController {
 
                         break;
                     case 4:
-                        displayMainMenu();
-                        break;
+                        return;
+                    default:
+                        System.out.println("Input number 1 to 4");
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -180,8 +186,9 @@ public class FuramaController {
                 System.out.println("Chọn 1 option ");
 
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
                         facilityService.addNewVilla();
                         displayMenuFacility();
@@ -195,8 +202,10 @@ public class FuramaController {
                         displayMenuFacility();
                         break;
                     case 4:
-                        displayMainMenu();
-                        break;
+                       return;
+                    default:
+                        System.out.println("Input number 1 to 4");
+
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -219,8 +228,8 @@ public class FuramaController {
 
                 System.out.println("Chọn 1 option ");
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
 
                         break;
@@ -237,8 +246,10 @@ public class FuramaController {
 
                         break;
                     case 6:
-                        displayMainMenu();
-                        break;
+                       return;
+                    default:
+                        System.out.println("Input number 1 to 6");
+
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -258,8 +269,8 @@ public class FuramaController {
                 System.out.println("Chọn 1 option ");
 
 
-                int choose = Integer.parseInt(scanner.nextLine());
-                switch (choose) {
+//                int choose = Integer.parseInt(scanner.nextLine());
+                switch (TryCatch.check()) {
                     case 1:
 
                         break;
@@ -267,8 +278,10 @@ public class FuramaController {
 
                         break;
                     case 3:
-                        displayMainMenu();
-                        break;
+                        return;
+                    default:
+                        System.out.println("Input number 1 to 3");
+
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
