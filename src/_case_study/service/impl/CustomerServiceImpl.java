@@ -11,6 +11,7 @@ import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     static final String FILE_CUSTOMER = "src\\_case_study\\data\\customer.csv";
     public static List<String[]> list;
     static final String COMMA = ",";
+
 
 //    static {
 //        customerList.add(new Customer("1", "20", "Trường", "093x888888",
@@ -47,6 +49,25 @@ public class CustomerServiceImpl implements CustomerService {
         for (Customer temp : customerList) {
             System.out.println(temp.toString());
         }
+    }
+
+    public static List<Customer> getCustomerList() {
+        List<Customer> getCustomer = new ArrayList<>();
+        List<String[]> listCustomerBooking = ReadAndWrite.readFile(FILE_CUSTOMER);
+
+        for (String[] item : listCustomerBooking) {
+            getCustomer.add(new Customer(item[0],
+                    item[1],
+                    item[2],
+                    item[3],
+                    item[4],
+                    item[5],
+                    item[6],
+                    item[7],
+                    item[8]));
+
+        }
+            return getCustomer;
     }
 
     @Override

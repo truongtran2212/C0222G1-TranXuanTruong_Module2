@@ -88,6 +88,12 @@ public abstract class Facility implements Serializable{
                 ", typeRent='" + typeRent + '\'' +
                 ',';
     }
-
-
+    public String getLine(){
+        return id + "," +
+                nameService + "," +
+                usableArea + "," +
+                rentCost + "," +
+                maximumPeople + "," +
+                typeRent;
+    }
 }

@@ -48,4 +48,9 @@ public class House extends Facility {
                 ", floor=" + floor +
                 '}';
     }
+
+    @Override
+    public String getLine() {
+        return super.getLine() + "," + roomStandard + "," + floor;
+    }
 }

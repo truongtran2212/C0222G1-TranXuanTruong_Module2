@@ -1,10 +1,7 @@
 package _case_study.controller;
 
 import _11_stack_and_queue.exercise.demerging_use_queue.Nu;
-import _case_study.service.impl.BookingServiceImpl;
-import _case_study.service.impl.CustomerServiceImpl;
-import _case_study.service.impl.EmployeeServiceImpl;
-import _case_study.service.impl.FacilityServiceImpl;
+import _case_study.service.impl.*;
 import _case_study.ultis.TryCatch;
 import org.junit.platform.commons.function.Try;
 
@@ -12,10 +9,6 @@ import java.util.Scanner;
 
 public class FuramaController {
     public static Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        displayMainMenu();
-    }
 
     public static void displayMainMenu() {
         while (true) {
@@ -215,8 +208,9 @@ public class FuramaController {
 
     public static void displayMenuBooking() {
         BookingServiceImpl bookingService = new BookingServiceImpl();
-
-        while (true) {
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        boolean flag = true;
+        while (flag) {
             try {
                 System.out.println("--------Booking Menu----------");
                 System.out.println("1. Add new booking");
@@ -231,15 +225,19 @@ public class FuramaController {
 //                int choose = Integer.parseInt(scanner.nextLine());
                 switch (TryCatch.check()) {
                     case 1:
+                        bookingService.addBooking();
 
                         break;
                     case 2:
+                        bookingService.displayListBooking();
 
                         break;
                     case 3:
+                        contractService.createNewContract();
 
                         break;
                     case 4:
+                        contractService.displayListContract();
 
                         break;
                     case 5:

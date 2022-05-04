@@ -8,87 +8,104 @@ import _case_study.service.FacilityService;
 
 import _case_study.ultis.ReadAndWrite;
 import _case_study.ultis.RegexData;
+import _case_study.ultis.RegexFacility;
 
 import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
-    private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-    private static Scanner scanner = new Scanner(System.in);
+    static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+    static Scanner scanner = new Scanner(System.in);
 
-    public static final String ID_VILLA = "^SVVL-[0-9]{4}$";
-    public static final String ID_ROOM = "^SVRO-[0-9]{4}$";
-    public static final String ID_HOUSE = "^SVHO-[0-9]{4}$";
-    public static final String NAME_SERVICE = "^[A-Z][a-zA-Z]{1,10}$";
-    public static final String RENT_TYPE = "^Year|Month|Day|Hour$";
-    public static final String ROOM_STANDARD = "^Vip|Normal|Double|Single$";
 
     public static final String FILE_VILLA = "src\\_case_study\\data\\facility\\villa.csv";
     public static final String FILE_HOUSE = "src\\_case_study\\data\\facility\\house.csv";
     public static final String FILE_ROOM = "src\\_case_study\\data\\facility\\room.csv";
+
+    public static final String FILE_FACILITY = "src\\_case_study\\data\\facility\\facility.csv";
 
     public static final String COMMA = ",";
 
     public static List<String[]> villaList = new ArrayList<>();
     public static List<String[]> houseList = new ArrayList<>();
     public static List<String[]> roomList = new ArrayList<>();
+    public static List<String[]> facilityList = new ArrayList<>();
+
+    public static RegexFacility regexFacility = new RegexFacility();
+
+    public Map<Facility, Integer> getFacilityIntegerMap(){
+        return facilityIntegerMap;
+    }
 
     @Override
     public void display() {
-//
-        villaList = ReadAndWrite.readFile(FILE_VILLA);
-        Villa villa;
+
+        facilityList = ReadAndWrite.readFile(FILE_FACILITY);
         facilityIntegerMap.clear();
 
-
-        for (String[] item : villaList) {
-
-            villa = new Villa(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
-                    item[5], item[6], Double.parseDouble(item[7]), Integer.parseInt(item[8]));
-            facilityIntegerMap.put(villa, 0);
-        }
-
-        houseList = ReadAndWrite.readFile(FILE_HOUSE);
+        Villa villa;
         House house;
-        for (String[] temp : houseList) {
-            house = new House(temp[0], temp[1], Double.parseDouble(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4]),
-                    temp[5], temp[6], Integer.parseInt(temp[7]));
-            facilityIntegerMap.put(house, 0);
-        }
-
-        roomList = ReadAndWrite.readFile(FILE_ROOM);
         Room room;
-        for (String[] str : roomList) {
-            room = new Room(str[0], str[1], Double.parseDouble(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]),
-                    str[5], str[6]);
-            facilityIntegerMap.put(room, 0);
-        }
 
+        for (String[] item : facilityList) {
+            if (item[1].equals("Villa")) {
+                villa = new Villa(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+                        item[5], item[6], Double.parseDouble(item[7]), Integer.parseInt(item[8]));
+                facilityIntegerMap.put(villa, Integer.parseInt(item[9]));
+            } else if (item[1].equals("House")) {
+                house = new House(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+                        item[5], item[6], Integer.parseInt(item[7]));
+                facilityIntegerMap.put(house, Integer.parseInt(item[8]));
+            } else {
+                room = new Room(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+                        item[5], item[6]);
+                facilityIntegerMap.put(room, Integer.parseInt(item[7]));
+            }
+        }
         for (Map.Entry<Facility, Integer> item : facilityIntegerMap.entrySet()) {
-            System.out.println(item.getKey());
+            System.out.println(item.getKey() + " So lan thue: " + item.getValue());
         }
     }
+
+//        Villa villa;
+//        for (String[] item : villaList) {
+//
+//            villa = new Villa(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+//                    item[5], item[6], Double.parseDouble(item[7]), Integer.parseInt(item[8]));
+//            facilityIntegerMap.put(villa, Integer.parseInt(item[9]));
+//        }
+//
+//        House house;
+//
+//        for (String[] temp : houseList) {
+//            house = new House(temp[0], temp[1], Double.parseDouble(temp[2]), Integer.parseInt(temp[3]), Integer.parseInt(temp[4]),
+//                    temp[5], temp[6], Integer.parseInt(temp[7]));
+//            facilityIntegerMap.put(house, Integer.parseInt(temp[8]));
+//        }
+//
+//
+//        Room room;
+//        for (String[] str : roomList) {
+//            room = new Room(str[0], str[1], Double.parseDouble(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]),
+//                    str[5], str[6]);
+//            facilityIntegerMap.put(room, Integer.parseInt(str[7]));
+//        }
+
     @Override
     public void displayMaintain() {
 
     }
+
     @Override
     public void addNewVilla() {
-        villaList = ReadAndWrite.readFile(FILE_VILLA);
 
+        facilityList = ReadAndWrite.readFile(FILE_FACILITY);
         System.out.println("Villa");
 
-        System.out.println("----------------------------------");
+        System.out.println("--------------------------------");
 
-        String id = inputIdVilla();
+        String id = regexFacility.inputIdVilla();
 
-        System.out.println("Danh sách các dịch vụ:");
-
-        System.out.println("1. Laundry");
-        System.out.println("2. Breakfast");
-        System.out.println("3. Cleaning");
-        System.out.println("4. Spa");
-
-        String nameService = inputNameService();
+        String nameService = "Villa";
 
         System.out.println("Diện tích dịch vụ");
         double usableArea;
@@ -141,7 +158,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("2. Month");
         System.out.println("3. Day");
         System.out.println("4. Hour");
-        String typeRent = inputRentType();
+        String typeRent = regexFacility.inputRentType();
 
 //        System.out.println("1. Thuê theo năm:");
 //        System.out.println("2. Thuê theo tháng:");
@@ -177,7 +194,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("2. Normal");
         System.out.println("3. Double");
         System.out.println("4. Single");
-        String roomStandard = inputRoomStandard();
+        String roomStandard = regexFacility.inputRoomStandard();
 
         System.out.println("Diện tích hồ bơi");
         double poolArea;
@@ -215,23 +232,23 @@ public class FacilityServiceImpl implements FacilityService {
 
         facilityIntegerMap.put(villa, 0);
 
-        String listLine = id + COMMA + nameService + COMMA + usableArea + COMMA + rentCost + COMMA + maximumPeople + COMMA +
-                typeRent + COMMA + roomStandard + COMMA + poolArea + COMMA + floor;
+        ReadAndWrite.writeFile(FILE_FACILITY, villa.getLine() + ",0");
 
-        ReadAndWrite.writeFile(FILE_VILLA, listLine);
         System.out.println("Đã thêm mới thành công.");
         System.out.println("--------------------------");
     }
+
     @Override
     public void addNewHouse() {
-        houseList = ReadAndWrite.readFile(FILE_HOUSE);
+
+        facilityList = ReadAndWrite.readFile(FILE_FACILITY);
         System.out.println("House");
 
         System.out.println("------------------------------");
 
-        String id = inputIdHouse();
+        String id = regexFacility.inputIdHouse();
 
-        String nameService = inputNameService();
+        String nameService = "House";
 
         System.out.println("Diện tích sử dụng:");
         double usableArea;
@@ -247,7 +264,6 @@ public class FacilityServiceImpl implements FacilityService {
                 System.err.println("Wrong format. Please input number");
             }
         }
-
         System.out.println("Tiền thuê");
         int rentCost;
         while (true) {
@@ -283,7 +299,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("3. Day");
         System.out.println("4. Hour");
 
-        String typeRent = inputRentType();
+        String typeRent = regexFacility.inputRentType();
 
 //        boolean check = false;
 //        String choose;
@@ -322,7 +338,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("3. Double");
         System.out.println("4. Single");
 
-        String roomStandard = inputRoomStandard();
+        String roomStandard = regexFacility.inputRoomStandard();
 
         System.out.println("Số tầng");
         int floor;
@@ -344,25 +360,24 @@ public class FacilityServiceImpl implements FacilityService {
 
         facilityIntegerMap.put(house, 0);
 
-        String listLine = id + COMMA + nameService + COMMA + usableArea + COMMA + rentCost + COMMA + maximumPeople + COMMA +
-                typeRent + COMMA + roomStandard + COMMA + floor;
+        ReadAndWrite.writeFile(FILE_FACILITY, house.getLine() + ",0");
 
-        ReadAndWrite.writeFile(FILE_HOUSE, listLine);
         System.out.println("Đã thêm thành công.");
         System.out.println("------------------------------");
     }
 
     @Override
     public void addNewRoom() {
-        roomList = ReadAndWrite.readFile(FILE_ROOM);
+
+        facilityList = ReadAndWrite.readFile(FILE_FACILITY);
 
         System.out.println("Room");
 
         System.out.println("----------------------------------");
 
-        String id = inputIdRoom();
+        String id = regexFacility.inputIdRoom();
 
-        String nameService = inputNameService();
+        String nameService = "Room";
 
         System.out.println("Diện tích sử dụng:");
         double usableArea;
@@ -378,7 +393,6 @@ public class FacilityServiceImpl implements FacilityService {
                 System.err.println("Wrong format. Please input number");
             }
         }
-
         System.out.println("Tiền thuê");
 
         int rentCost;
@@ -394,7 +408,6 @@ public class FacilityServiceImpl implements FacilityService {
                 System.err.println("Wrong format. Please input number");
             }
         }
-
         System.out.println("Số lượng người");
         int maximumPeople;
         while (true) {
@@ -410,7 +423,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        String typeRent = inputRentType();
+        String typeRent = regexFacility.inputRentType();
 
 //        System.out.println("1. Thuê theo năm:");
 //        System.out.println("2. Thuê theo tháng:");
@@ -449,46 +462,9 @@ public class FacilityServiceImpl implements FacilityService {
 
         facilityIntegerMap.put(room, 0);
 
-        String listLine = id + COMMA + nameService + COMMA + usableArea + COMMA + rentCost + COMMA + maximumPeople + COMMA +
-                typeRent + COMMA + freeService;
-
-        ReadAndWrite.writeFile(FILE_ROOM, listLine);
+        ReadAndWrite.writeFile(FILE_FACILITY, room.getLine() + ",0");
 
         System.out.println("Đã thêm thành công.");
         System.out.println("------------------------------");
-    }
-
-    private String inputIdVilla() {
-        System.out.println("Nhập id villa");
-        return RegexData.regexString(scanner.nextLine(), ID_VILLA,
-                "Bạn đã nhập sai định dạng, định dạng đúng là SVVL-XXXX(với XXXX là 4 số bất kì)");
-    }
-
-    private String inputIdHouse() {
-        System.out.println("Nhập id house");
-        return RegexData.regexString(scanner.nextLine(), ID_HOUSE,
-                "Bạn đã nhập sai định dạng, định dạng đúng là SVHO-XXXX(với XXXX là 4 số bất kì)");
-    }
-
-    private String inputIdRoom() {
-        System.out.println("Nhập id room");
-        return RegexData.regexString(scanner.nextLine(), ID_ROOM,
-                "Bạn đã nhập sai định dạng, định dạng đúng là SVRO-XXXX(với XXXX là 4 số bất kì)");
-    }
-
-    private String inputNameService() {
-        System.out.println("Nhập tên dịch vụ");
-        return RegexData.regexString(scanner.nextLine(), NAME_SERVICE,
-                "Bạn nhập sai rồi, chữ cái đầu tiên của tên dịch vụ phải viết hoa.");
-    }
-
-    private String inputRentType() {
-        System.out.println("Kiểu thuê");
-        return RegexData.regexString(scanner.nextLine(), RENT_TYPE, "Có 4 kiểu thuê gồm: 1. Year,2. Month,3. Day,4. Hour");
-    }
-
-    private String inputRoomStandard() {
-        System.out.println("Tiêu chuẩn phòng");
-        return RegexData.regexString(scanner.nextLine(), ROOM_STANDARD, "Có 4 kiểu thuê gồm: 1. Vip,2. Normal,3. Double,4. Single");
     }
 }

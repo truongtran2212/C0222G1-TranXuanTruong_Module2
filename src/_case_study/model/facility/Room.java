@@ -35,4 +35,9 @@ public class Room extends Facility{
                 " freeService='" + freeService + '\'' +
                 '}';
     }
+
+    @Override
+    public String getLine() {
+        return super.getLine() + "," + freeService;
+    }
 }

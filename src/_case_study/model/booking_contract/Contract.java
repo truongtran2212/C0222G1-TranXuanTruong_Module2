@@ -1,49 +1,55 @@
 package _case_study.model.booking_contract;
 
-public class Contract {
-    private int numberContract;
-    private int idBooking;
-    private int beforeMoney;
+import _case_study.model.facility.Facility;
+import _case_study.model.person.Customer;
+
+import java.io.Serializable;
+import java.time.temporal.ChronoUnit;
+
+public class Contract implements Serializable {
+    private String idContract;
+    private Booking idBooking;
+    private int preMoney;
     private int totalMoney;
-    private String idCustomer;
+    private Customer idCustomer;
 
     public Contract() {
     }
 
-    public Contract(int numberContract,
-                    int idBooking,
-                    int beforeMoney,
+    public Contract(String idContract,
+                    Booking idBooking,
+                    int preMoney,
                     int totalMoney,
-                    String idCustomer) {
-        this.numberContract = numberContract;
+                    Customer idCustomer) {
+        this.idContract = idContract;
         this.idBooking = idBooking;
-        this.beforeMoney = beforeMoney;
+        this.preMoney = preMoney;
         this.totalMoney = totalMoney;
         this.idCustomer = idCustomer;
     }
 
-    public int getNumberContract() {
-        return numberContract;
+    public String getIdContract() {
+        return idContract;
     }
 
-    public void setNumberContract(int numberContract) {
-        this.numberContract = numberContract;
+    public void setIdContract(String idContract) {
+        this.idContract = idContract;
     }
 
-    public int getIdBooking() {
+    public Booking getIdBooking() {
         return idBooking;
     }
 
-    public void setIdBooking(int idBooking) {
+    public void setIdBooking(Booking idBooking) {
         this.idBooking = idBooking;
     }
 
-    public int getBeforeMoney() {
-        return beforeMoney;
+    public int getPreMoney() {
+        return preMoney;
     }
 
-    public void setBeforeMoney(int beforeMoney) {
-        this.beforeMoney = beforeMoney;
+    public void setPreMoney(int preMoney) {
+        this.preMoney = preMoney;
     }
 
     public int getTotalMoney() {
@@ -54,20 +60,20 @@ public class Contract {
         this.totalMoney = totalMoney;
     }
 
-    public String getIdCustomer() {
+    public Customer getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(String idCustomer) {
+    public void setIdCustomer(Customer idCustomer) {
         this.idCustomer = idCustomer;
     }
 
     @Override
     public String toString() {
         return "Contract{" +
-                "numberContract=" + numberContract +
+                "idContract=" + idContract +
                 ", idBooking=" + idBooking +
-                ", beforeMoney=" + beforeMoney +
+                ", beforeMoney=" + preMoney +
                 ", totalMoney=" + totalMoney +
                 ", idCustomer='" + idCustomer + '\'' +
                 '}';
