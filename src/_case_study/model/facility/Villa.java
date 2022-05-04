@@ -29,6 +29,67 @@ public class Villa extends Facility {
         this.floor = floor;
     }
 
+
+    @Override
+    public String getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(String id) {
+        super.setId(id);
+    }
+
+    @Override
+    public String getNameService() {
+        return super.getNameService();
+    }
+
+    @Override
+    public void setNameService(String nameService) {
+        super.setNameService(nameService);
+    }
+
+    @Override
+    public double getUsableArea() {
+        return super.getUsableArea();
+    }
+
+    @Override
+    public void setUsableArea(double usableArea) {
+        super.setUsableArea(usableArea);
+    }
+
+    @Override
+    public int getRentCost() {
+        return super.getRentCost();
+    }
+
+    @Override
+    public void setRentCost(int rentCost) {
+        super.setRentCost(rentCost);
+    }
+
+    @Override
+    public int getMaximumPeople() {
+        return super.getMaximumPeople();
+    }
+
+    @Override
+    public void setMaximumPeople(int maximumPeople) {
+        super.setMaximumPeople(maximumPeople);
+    }
+
+    @Override
+    public String getTypeRent() {
+        return super.getTypeRent();
+    }
+
+    @Override
+    public void setTypeRent(String typeRent) {
+        super.setTypeRent(typeRent);
+    }
+
     public String getRoomStandard() {
         return roomStandard;
     }

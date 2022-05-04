@@ -1,6 +1,7 @@
 package _case_study.model.facility;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public abstract class Facility implements Serializable{

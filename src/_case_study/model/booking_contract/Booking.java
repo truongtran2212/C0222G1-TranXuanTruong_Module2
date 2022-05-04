@@ -4,14 +4,13 @@ import _case_study.model.facility.Facility;
 import _case_study.model.person.Customer;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Booking implements Serializable {
     private int idBooking;
     private String startDate;
     private String endDate;
-    private Customer idCustomer;
-    private Facility nameService;
+    private String idCustomer;
+    private String idFacility;
     private String typeOfService;
 
     public Booking() {
@@ -21,8 +20,8 @@ public class Booking implements Serializable {
     public Booking(int idBooking,
                    String startDate,
                    String endDate,
-                   Customer idCustomer,
-                   Facility nameService,
+                   String idCustomer,
+                   String idFacility,
                    String typeOfService) {
 
 
@@ -30,7 +29,7 @@ public class Booking implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
         this.idCustomer = idCustomer;
-        this.nameService = nameService;
+        this.idFacility = idFacility;
         this.typeOfService = typeOfService;
     }
 
@@ -58,20 +57,28 @@ public class Booking implements Serializable {
         this.endDate = endDate;
     }
 
-    public Customer getIdCustomer() {
+    public int getIdBooking() {
+        return idBooking;
+    }
+
+    public void setIdBooking(int idBooking) {
+        this.idBooking = idBooking;
+    }
+
+    public String getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(Customer idCustomer) {
+    public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
     }
 
-    public Facility getNameService() {
-        return nameService;
+    public String getIdFacility() {
+        return idFacility;
     }
 
-    public void setNameService(Facility nameService) {
-        this.nameService = nameService;
+    public void setIdFacility(String idFacility) {
+        this.idFacility = idFacility;
     }
 
     public String getTypeOfService() {
@@ -89,7 +96,7 @@ public class Booking implements Serializable {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", idCustomer=" + idCustomer +
-                ", nameService='" + nameService + '\'' +
+                ", idFacility='" + idFacility + '\'' +
                 ", typeOfService=" + typeOfService +
                 '}';
     }

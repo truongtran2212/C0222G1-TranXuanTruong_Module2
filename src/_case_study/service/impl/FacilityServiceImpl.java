@@ -47,11 +47,11 @@ public class FacilityServiceImpl implements FacilityService {
         Room room;
 
         for (String[] item : facilityList) {
-            if (item[1].equals("Villa")) {
+            if (item[0].contains("SVVL")) {
                 villa = new Villa(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
                         item[5], item[6], Double.parseDouble(item[7]), Integer.parseInt(item[8]));
                 facilityIntegerMap.put(villa, Integer.parseInt(item[9]));
-            } else if (item[1].equals("House")) {
+            } else if (item[0].contains("SVHO")) {
                 house = new House(item[0], item[1], Double.parseDouble(item[2]), Integer.parseInt(item[3]), Integer.parseInt(item[4]),
                         item[5], item[6], Integer.parseInt(item[7]));
                 facilityIntegerMap.put(house, Integer.parseInt(item[8]));
@@ -105,7 +105,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String id = regexFacility.inputIdVilla();
 
-        String nameService = "Villa";
+        String nameService = regexFacility.inputNameService();
 
         System.out.println("Diện tích dịch vụ");
         double usableArea;
@@ -248,7 +248,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String id = regexFacility.inputIdHouse();
 
-        String nameService = "House";
+        String nameService = regexFacility.inputNameService();
 
         System.out.println("Diện tích sử dụng:");
         double usableArea;
@@ -377,7 +377,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String id = regexFacility.inputIdRoom();
 
-        String nameService = "Room";
+        String nameService = regexFacility.inputNameService();
 
         System.out.println("Diện tích sử dụng:");
         double usableArea;

@@ -178,11 +178,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
                 employeeList.add(employee);
                 // line này có tác dụng là gì.
+                List<String> stringList = new ArrayList<>();
                 String listLine = id + COMMA + dayOfBirth + COMMA + name +
                         COMMA + phoneNumber + COMMA + idCardNumber + COMMA + email +
                         COMMA + gender + COMMA + level + COMMA + salary + COMMA + staffPosition;
 
-                ReadAndWrite.writeFile(FILE_EMPLOYEE, listLine);
+                stringList.add(listLine);
+                ReadAndWrite.writeFilePerson(FILE_EMPLOYEE, stringList);
                 System.out.println("Đã thêm mới thành công.");
 
                 System.out.println("-----------------------------");
@@ -322,14 +324,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                     file.delete();
 
                     String listLine;
+                    List<String> stringList =  new ArrayList<>();
 
                     for (Employee item : employeeList) {
                         listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
                                 item.getPhoneNumber() + COMMA + item.getIdCardNumber() + COMMA + item.getEmail() + COMMA +
                                 item.isGender() + COMMA + item.getLevel() + COMMA + item.getSalary() +
                                 COMMA + item.getStaffPosition();
-                        ReadAndWrite.writeFile(FILE_EMPLOYEE, listLine);
+                        stringList.add(listLine);
                     }
+
+                    ReadAndWrite.writeFilePerson(FILE_EMPLOYEE, stringList);
                     System.out.println("Thông tin của nhân viên đã được sửa đổi. ");
                     flag = true;
                     break;

@@ -13,15 +13,15 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public void createNewContract() {
-        Queue<Booking> bookingQueue = new LinkedList<>();
+        Queue<String> bookingQueue = new LinkedList<>();
         Set<Booking> bookingSet = new BookingServiceImpl().sendBooking();
 
         for (Booking item : bookingSet) {
             bookingQueue.add(item);
         }
         while (!bookingQueue.isEmpty()) {
-            Booking booking = bookingQueue.poll();
-            Customer customer = booking.getIdCustomer();
+            String booking = bookingQueue.poll();
+            Booking customer = booking.getIdCustomer();
             System.out.println("Đang tạo hợp đồng cho Booking có thông tin " + booking.toString());
             System.out.println("Đang tạo hợp đồng cho khách hàng có thông tin " + customer.toString());
 

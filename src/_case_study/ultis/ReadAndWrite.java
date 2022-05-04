@@ -24,7 +24,7 @@ public class ReadAndWrite {
         return list;
     }
 
-    public static void writeFile(String path, String listLine) {
+    public static void writeFilePerson(String path,List<String> listLine) {
         File file = new File(path);
         if(!file.exists()){
             try {
@@ -35,8 +35,28 @@ public class ReadAndWrite {
         }
         try (FileWriter fileWriter = new FileWriter(file, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
-            bufferedWriter.write(listLine);
-            bufferedWriter.newLine();
+            for (String item: listLine) {
+                bufferedWriter.write(item);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeFile(String path,String listLine) {
+        File file = new File(path);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try (FileWriter fileWriter = new FileWriter(file, true);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
+
+                bufferedWriter.write(listLine);
+                bufferedWriter.newLine();
 
         } catch (IOException e) {
             e.printStackTrace();

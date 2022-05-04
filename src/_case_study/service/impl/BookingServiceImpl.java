@@ -15,11 +15,7 @@ import java.util.*;
 public class BookingServiceImpl implements BookingService {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
-    public static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-    public static List<Customer> customerList = new ArrayList<>();
-    private static List<String[]> list = new ArrayList<>();
-    static Set<String[]> stringSet = new LinkedHashSet<>();
+    public static Set<Booking> bookingSet = getBooking();
 
     public static final String FILE_BOOKING = "src\\_case_study\\data\\booking.csv";
 
@@ -33,23 +29,36 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void displayListBooking() {
-
-        stringSet = ReadAnhWriteBooking.readFile(FILE_BOOKING);
+        bookingSet = getBooking();
 
         for (Booking item : bookingSet) {
             System.out.println(item.toString());
         }
     }
 
+    public static  Set<Booking> getBooking() {
+        Set<Booking> bookings = new TreeSet<>(new BookingComparator());
+        List<String[]> list = ReadAndWrite.readFile(FILE_BOOKING);
+
+        for (String[] item : list) {
+            bookings.add(new Booking(Integer.parseInt(item[0]),
+                    item[1],
+                    item[2],
+                    item[3],
+                    item[4],
+                    item[5]));
+        }
+        return bookings;
+    }
+
     @Override
     public void addBooking() {
-        stringSet = ReadAnhWriteBooking.readFile(FILE_BOOKING);
         int id = 1;
         if (!bookingSet.isEmpty()) {
             id = bookingSet.size();
         }
-        Customer customer = chooseCustomer();
-        Facility facility = chooseFacility();
+        String customer = chooseCustomer();
+        String idFacility = chooseFacility();
         System.out.println("Nhập ngày bắt đầu thuê");
         String startDate = scanner.nextLine();
         System.out.println("Nhập ngày kết thúc thuê");
@@ -57,17 +66,14 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Nhập kiểu dịch vụ");
         String typeOfService = scanner.nextLine();
 
-        Booking booking = new Booking(id, startDate, endDate, customer, facility, typeOfService);
-
-        bookingSet.add(booking);
-
-        String line = id + "," + startDate + "," + endDate + "," + customer + "," + facility + "," + typeOfService;
+        String line = id + "," + startDate + "," + endDate + "," + customer + "," + idFacility + "," + typeOfService;
 
         ReadAnhWriteBooking.writeFile(FILE_BOOKING, line);
 
         System.out.println("Đã booking thành công");
     }
-    public static Customer chooseCustomer() {
+
+    public static String chooseCustomer() {
 
         CustomerServiceImpl customerService = new CustomerServiceImpl();
 
@@ -81,7 +87,7 @@ public class BookingServiceImpl implements BookingService {
             String id = scanner.nextLine();
             for (Customer item : customers) {
                 if (item.getId().equals(id)) {
-                    return item;
+                    return id;
                 } else {
                     flag = false;
                 }
@@ -92,7 +98,7 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    public static Facility chooseFacility() {
+    public static String chooseFacility() {
 
         System.out.println("Danh sách dịch vụ");
 
@@ -107,7 +113,8 @@ public class BookingServiceImpl implements BookingService {
         while (check) {
             for (Map.Entry<Facility, Integer> item : integerMap.entrySet()) {
                 if (id.equals(item.getKey().getId())) {
-                    return item.getKey();
+                    item.setValue(item.getValue() + 1);
+                    return id;
                 }
             }
             if (check) {

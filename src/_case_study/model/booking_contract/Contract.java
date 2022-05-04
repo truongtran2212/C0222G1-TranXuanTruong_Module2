@@ -8,19 +8,19 @@ import java.time.temporal.ChronoUnit;
 
 public class Contract implements Serializable {
     private String idContract;
-    private Booking idBooking;
+    private String idBooking;
     private int preMoney;
     private int totalMoney;
-    private Customer idCustomer;
+    private String idCustomer;
 
     public Contract() {
     }
 
     public Contract(String idContract,
-                    Booking idBooking,
+                    String idBooking,
                     int preMoney,
                     int totalMoney,
-                    Customer idCustomer) {
+                    String idCustomer) {
         this.idContract = idContract;
         this.idBooking = idBooking;
         this.preMoney = preMoney;
@@ -36,11 +36,11 @@ public class Contract implements Serializable {
         this.idContract = idContract;
     }
 
-    public Booking getIdBooking() {
+    public String getIdBooking() {
         return idBooking;
     }
 
-    public void setIdBooking(Booking idBooking) {
+    public void setIdBooking(String idBooking) {
         this.idBooking = idBooking;
     }
 
@@ -60,11 +60,11 @@ public class Contract implements Serializable {
         this.totalMoney = totalMoney;
     }
 
-    public Customer getIdCustomer() {
+    public String getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(Customer idCustomer) {
+    public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
     }
 

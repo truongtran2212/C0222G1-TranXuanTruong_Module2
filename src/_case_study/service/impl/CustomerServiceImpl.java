@@ -156,10 +156,12 @@ public class CustomerServiceImpl implements CustomerService {
 
                 Customer customer = new Customer(id, dayOfBirth, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
                 customerList.add(customer);
-                String lineList;
-                lineList = id + COMMA + dayOfBirth + COMMA + name + COMMA + phoneNumber + COMMA + idCardNumber + COMMA +
+                List<String> stringList = new ArrayList<>();
+               String lineList = id + COMMA + dayOfBirth + COMMA + name + COMMA + phoneNumber + COMMA + idCardNumber + COMMA +
                         email + COMMA + gender + COMMA + address + COMMA + typeOfCustomer;
-                ReadAndWrite.writeFile(FILE_CUSTOMER, lineList);
+
+               stringList.add(lineList);
+                ReadAndWrite.writeFilePerson(FILE_CUSTOMER, stringList);
                 System.out.println("Đã thêm mới thành công.");
                 break;
             }
@@ -254,13 +256,16 @@ public class CustomerServiceImpl implements CustomerService {
                     file.delete();
 
                     String listLine;
+
+                    List<String> stringList = new ArrayList<>();
                     for (Customer item : customerList) {
                         listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
                                 item.getPhoneNumber() + COMMA + item.getIdCardNumber() + COMMA + item.getEmail() + COMMA +
                                 item.isGender() + COMMA + item.getAddress() + COMMA + typeOfCustomer;
-                        ReadAndWrite.writeFile(FILE_CUSTOMER, listLine);
-                    }
 
+                        stringList.add(listLine);
+                    }
+                    ReadAndWrite.writeFilePerson(FILE_CUSTOMER, stringList);
                     System.out.println("Thông tin của khách hàng đã được sửa đổi. ");
                     flag = true;
                     break;
