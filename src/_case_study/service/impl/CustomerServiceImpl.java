@@ -74,118 +74,24 @@ public class CustomerServiceImpl implements CustomerService {
     // Thêm mới khách hàng
     public void addNew() {
         list = ReadAndWrite.readFile(FILE_CUSTOMER);
-        System.out.println("Nhập id khách hàng:");
-        String id = input.nextLine();
-
-        boolean flag = true;
-        for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getId().equals(id)) {
-                flag = false;
-                break;
-            }
-        }
-        if (!flag) {
-            System.out.println("Đã có khách hàng sử dụng id này");
-
-        } else {
-
-            System.out.println("Ở resort chưa có khách hàng sử dụng id này: ");
-            System.out.println("Bắt đầu thêm khách hàng mới: ");
-
-            System.out.println("--------------------------");
-
-            System.out.println("Nhập ngày tháng năm sinh của khách hàng:");
-            String dayOfBirth = RegexData.regexAge(input.nextLine(), DATE_OF_BIRTH);
-
-            System.out.println("Nhập tên khách hàng:");
-            String name = input.nextLine();
-
-            System.out.println("Nhập số điện thoại khách hàng:");
-            String phoneNumber = input.nextLine();
-
-            System.out.println("Nhập chứng minh nhân dân khách hàng:");
-            String idCardNumber = input.nextLine();
-
-            System.out.println("Nhập email khách hàng:");
-            String email = input.nextLine();
-
-            System.out.println("Nhập giới tính khách hàng:");
-            String gender = input.nextLine();
-
-            System.out.println("Nhập địa chỉ khách hàng:");
-            String address = input.nextLine();
-
-            System.out.println("Nhập loại khách hàng: ");
-
-            String typeOfCustomer = "";
-
-            System.out.println("1. Diamond");
-            System.out.println("2. Platinum");
-            System.out.println("3. Gold");
-            System.out.println("4. Silver");
-            System.out.println("5. Member");
-
-//            int choose = Integer.parseInt(input.nextLine());
-            boolean check = true;
-
-            while (check) {
-                switch (TryCatch.check()) {
-                    case 1:
-                        typeOfCustomer += "Diamond";
-                        check = false;
-                        break;
-                    case 2:
-                        typeOfCustomer += "Platinum";
-                        check = false;
-                        break;
-                    case 3:
-                        typeOfCustomer += "Gold";
-                        check = false;
-                        break;
-                    case 4:
-                        typeOfCustomer += "Silver";
-                        check = false;
-                        break;
-                    case 5:
-                        typeOfCustomer += "Member";
-                        check = false;
-                        break;
-                    default:
-                        System.out.println("Input number 1 to 5");
+        while (true) {
+            System.out.println("Nhập id khách hàng:");
+            String id = input.nextLine();
+            boolean flag = true;
+            for (int i = 0; i < customerList.size(); i++) {
+                if (customerList.get(i).getId().equals(id)) {
+                    flag = false;
+                    break;
                 }
             }
+            if (!flag) {
+                System.out.println("Đã có khách hàng sử dụng id này");
+            } else {
 
-            Customer customer = new Customer(id, dayOfBirth, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
-            customerList.add(customer);
-            String lineList;
-            lineList = id + COMMA + dayOfBirth + COMMA + name + COMMA + phoneNumber + COMMA + idCardNumber + COMMA +
-                    email + COMMA + gender + COMMA + address + COMMA + typeOfCustomer;
-            ReadAndWrite.writeFile(FILE_CUSTOMER, lineList);
-            System.out.println("Đã thêm mới thành công.");
-        }
-    }
+                System.out.println("Ở resort chưa có khách hàng sử dụng id này: ");
+                System.out.println("Bắt đầu thêm khách hàng mới: ");
 
-    @Override
-    public void edit() {
-        list = ReadAndWrite.readFile(FILE_CUSTOMER);
-        display();
-
-        System.out.println("Tìm kiếm khách hàng thông qua id:");
-        System.out.println("------------------------------");
-
-
-        System.out.println("Nhập id khách hàng:");
-        String id = input.nextLine();
-
-        boolean flag = false;
-        for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getId().equals(id)) {
-
-
-                System.out.println("Ở resort có khách hàng sử dụng id này: ");
-                System.out.println("Bắt đầu chỉnh sửa thông tin: ");
-
-                System.out.println("---------------------");
+                System.out.println("--------------------------");
 
                 System.out.println("Nhập ngày tháng năm sinh của khách hàng:");
                 String dayOfBirth = RegexData.regexAge(input.nextLine(), DATE_OF_BIRTH);
@@ -210,7 +116,6 @@ public class CustomerServiceImpl implements CustomerService {
 
                 System.out.println("Nhập loại khách hàng: ");
 
-
                 String typeOfCustomer = "";
 
                 System.out.println("1. Diamond");
@@ -219,8 +124,9 @@ public class CustomerServiceImpl implements CustomerService {
                 System.out.println("4. Silver");
                 System.out.println("5. Member");
 
-//                int choose = Integer.parseInt(input.nextLine());
+//            int choose = Integer.parseInt(input.nextLine());
                 boolean check = true;
+
                 while (check) {
                     switch (TryCatch.check()) {
                         case 1:
@@ -247,29 +153,124 @@ public class CustomerServiceImpl implements CustomerService {
                             System.out.println("Input number 1 to 5");
                     }
                 }
-                customerList.set(i, new Customer(id, dayOfBirth, name, phoneNumber,
-                        idCardNumber, email, gender, address, typeOfCustomer));
 
-                File file = new File(FILE_CUSTOMER);
-                file.delete();
-
-                String listLine;
-                for (Customer item : customerList) {
-                    listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
-                            item.getPhoneNumber() + COMMA + item.getIdCardNumber() + COMMA + item.getEmail() + COMMA +
-                            item.isGender() + COMMA + item.getAddress() + COMMA + typeOfCustomer;
-                    ReadAndWrite.writeFile(FILE_CUSTOMER, listLine);
-                }
-
-                System.out.println("Thông tin của khách hàng đã được sửa đổi. ");
-                flag = true;
+                Customer customer = new Customer(id, dayOfBirth, name, phoneNumber, idCardNumber, email, gender, address, typeOfCustomer);
+                customerList.add(customer);
+                String lineList;
+                lineList = id + COMMA + dayOfBirth + COMMA + name + COMMA + phoneNumber + COMMA + idCardNumber + COMMA +
+                        email + COMMA + gender + COMMA + address + COMMA + typeOfCustomer;
+                ReadAndWrite.writeFile(FILE_CUSTOMER, lineList);
+                System.out.println("Đã thêm mới thành công.");
                 break;
             }
         }
-        if (!flag) {
-            System.out.println("Không có khách hàng nào sử dụng id này");
+    }
+    @Override
+    public void edit() {
+        list = ReadAndWrite.readFile(FILE_CUSTOMER);
+        display();
+
+        System.out.println("Tìm kiếm khách hàng thông qua id:");
+        System.out.println("------------------------------");
+
+        while (true) {
+            System.out.println("Nhập id khách hàng:");
+            String id = input.nextLine();
+
+            boolean flag = false;
+            for (int i = 0; i < customerList.size(); i++) {
+                if (customerList.get(i).getId().equals(id)) {
+
+
+                    System.out.println("Ở resort có khách hàng sử dụng id này: ");
+                    System.out.println("Bắt đầu chỉnh sửa thông tin: ");
+
+                    System.out.println("---------------------");
+
+                    System.out.println("Nhập ngày tháng năm sinh của khách hàng:");
+                    String dayOfBirth = RegexData.regexAge(input.nextLine(), DATE_OF_BIRTH);
+
+                    System.out.println("Nhập tên khách hàng:");
+                    String name = input.nextLine();
+
+                    System.out.println("Nhập số điện thoại khách hàng:");
+                    String phoneNumber = input.nextLine();
+
+                    System.out.println("Nhập chứng minh nhân dân khách hàng:");
+                    String idCardNumber = input.nextLine();
+
+                    System.out.println("Nhập email khách hàng:");
+                    String email = input.nextLine();
+
+                    System.out.println("Nhập giới tính khách hàng:");
+                    String gender = input.nextLine();
+
+                    System.out.println("Nhập địa chỉ khách hàng:");
+                    String address = input.nextLine();
+
+                    System.out.println("Nhập loại khách hàng: ");
+
+
+                    String typeOfCustomer = "";
+
+                    System.out.println("1. Diamond");
+                    System.out.println("2. Platinum");
+                    System.out.println("3. Gold");
+                    System.out.println("4. Silver");
+                    System.out.println("5. Member");
+
+//                int choose = Integer.parseInt(input.nextLine());
+                    boolean check = true;
+                    while (check) {
+                        switch (TryCatch.check()) {
+                            case 1:
+                                typeOfCustomer += "Diamond";
+                                check = false;
+                                break;
+                            case 2:
+                                typeOfCustomer += "Platinum";
+                                check = false;
+                                break;
+                            case 3:
+                                typeOfCustomer += "Gold";
+                                check = false;
+                                break;
+                            case 4:
+                                typeOfCustomer += "Silver";
+                                check = false;
+                                break;
+                            case 5:
+                                typeOfCustomer += "Member";
+                                check = false;
+                                break;
+                            default:
+                                System.out.println("Input number 1 to 5");
+                        }
+                    }
+                    customerList.set(i, new Customer(id, dayOfBirth, name, phoneNumber,
+                            idCardNumber, email, gender, address, typeOfCustomer));
+
+                    File file = new File(FILE_CUSTOMER);
+                    file.delete();
+
+                    String listLine;
+                    for (Customer item : customerList) {
+                        listLine = item.getId() + COMMA + item.getDayOfBirth() + COMMA + item.getName() + COMMA +
+                                item.getPhoneNumber() + COMMA + item.getIdCardNumber() + COMMA + item.getEmail() + COMMA +
+                                item.isGender() + COMMA + item.getAddress() + COMMA + typeOfCustomer;
+                        ReadAndWrite.writeFile(FILE_CUSTOMER, listLine);
+                    }
+
+                    System.out.println("Thông tin của khách hàng đã được sửa đổi. ");
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                System.out.println("Không có khách hàng nào sử dụng id này");
+            }
+            System.out.println("-------------------------");
         }
-        System.out.println("-------------------------");
     }
 
     @Override
